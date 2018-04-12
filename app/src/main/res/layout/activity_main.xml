@@ -33,12 +33,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="230dp"
+        android:layout_marginBottom="205dp"
         android:background="#11000000"
+        android:drawableLeft="@drawable/ic_lock"
         android:ems="10"
         android:hint="Mot de passe"
-        android:drawableLeft="@drawable/ic_lock"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:password="true" />
 
     <TextView
         android:id="@+id/txtInscription"
