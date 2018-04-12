@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.geni.projetprog4.Main3Activity">
+
+    <TextView
+        android:id="@+id/lblTitreInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="Inscription!"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/txtConsigneInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtIdentifiantInscription"
+        android:layout_alignLeft="@+id/lblIdentifiantInscription"
+        android:layout_alignRight="@+id/txtIdentifiantInscription"
+        android:layout_alignStart="@+id/lblIdentifiantInscription"
+        android:layout_below="@+id/lblTitreInscription"
+        android:layout_marginTop="21dp"
+        android:text="Afin de poursuivre votre inscription, veuillez remplir les champs suivants:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/lblIdentifiantInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtIdentifiantInscription"
+        android:layout_alignBottom="@+id/txtIdentifiantInscription"
+        android:layout_toLeftOf="@+id/lblTitreInscription"
+        android:layout_toStartOf="@+id/lblTitreInscription"
+        android:text="Identifiant:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/txtIdentifiantInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtConsigneInscription"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/lblMotDePasseInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblIdentifiantInscription"
+        android:layout_alignStart="@+id/lblIdentifiantInscription"
+        android:layout_centerVertical="true"
+        android:text="Mot de passe:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/txtMotDePasseInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblMotDePasseInscription"
+        android:layout_alignBottom="@+id/lblMotDePasseInscription"
+        android:layout_alignLeft="@+id/txtIdentifiantInscription"
+        android:layout_alignStart="@+id/txtIdentifiantInscription"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spinnerPaysInscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtMotDePasseInscription"
+        android:layout_alignLeft="@+id/txtMotDePasseInscription"
+        android:layout_alignRight="@+id/txtMotDePasseInscription"
+        android:layout_alignStart="@+id/txtMotDePasseInscription"
+        android:layout_below="@+id/txtMotDePasseInscription"
+        android:layout_marginTop="19dp" />
+
+    <TextView
+        android:id="@+id/lblPaysInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblMotDePasseInscription"
+        android:layout_alignStart="@+id/lblMotDePasseInscription"
+        android:layout_alignTop="@+id/spinnerPaysInscription"
+        android:text="Pays:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/txtCourrielInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinnerPaysInscription"
+        android:layout_alignStart="@+id/spinnerPaysInscription"
+        android:layout_below="@+id/lblPaysInscription"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/lblCourrielInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtCourrielInscription"
+        android:layout_alignBottom="@+id/txtCourrielInscription"
+        android:layout_alignLeft="@+id/lblPaysInscription"
+        android:layout_alignStart="@+id/lblPaysInscription"
+        android:text="Courriel:"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCourrielInscription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:text="Inscrivez-moi!" />
+</RelativeLayout>
