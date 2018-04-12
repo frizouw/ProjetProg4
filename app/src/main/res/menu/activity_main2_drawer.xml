@@ -5,33 +5,37 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_mes_recettes"
+            android:icon="@drawable/ic_recettes"
+            android:title="Mes recettes" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_amies"
+            android:icon="@drawable/ic_amies"
+            android:title="Amies" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_calendrier"
+            android:icon="@drawable/ic_calendar"
+            android:title="Calendrier" />
+        <item
+            android:id="@+id/nav_decouverte"
+            android:icon="@drawable/ic_search"
+            android:title="Découvrir" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Paramètres">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_configuration"
+                android:icon="@drawable/ic_settings"
+                android:title="Configuration" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_deconnexion"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Déconnexion" />
         </menu>
     </item>
 
