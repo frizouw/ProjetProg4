@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/lblUsernameProfile"
+        android:id="@+id/txtIdentifiantConnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imgAvatarProfile"
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_alignStart="@+id/txtIdentifiantConnexion"
         android:layout_marginTop="71dp"
         android:text="Courriel :"
         tools:layout_editor_absoluteX="155dp"
@@ -43,7 +43,7 @@
         android:layout_width="31dp"
         android:layout_height="32dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_alignStart="@+id/txtIdentifiantConnexion"
         android:layout_marginTop="125dp"
         app:srcCompat="@drawable/ic_currency"
         tools:layout_editor_absoluteX="155dp"
@@ -54,18 +54,18 @@
         android:layout_width="188dp"
         android:layout_height="20dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_alignStart="@+id/txtIdentifiantConnexion"
         android:layout_marginTop="98dp"
         android:text="Patate3@gmail.ca"
         tools:layout_editor_absoluteX="156dp"
         tools:layout_editor_absoluteY="82dp" />
 
     <TextView
-        android:id="@+id/txtUsernameProfile2"
+        android:id="@+id/txtIdentifiantProfile"
         android:layout_width="188dp"
         android:layout_height="20dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_alignStart="@+id/txtIdentifiantConnexion"
         android:layout_marginTop="43dp"
         android:text="Patate3000"
         tools:layout_editor_absoluteX="155dp"
