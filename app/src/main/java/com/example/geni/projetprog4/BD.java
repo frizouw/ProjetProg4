@@ -63,7 +63,8 @@ public class BD {
     //Insert des commentaires dans la table des commentaires
     public void insererCommentaire()
     {
-        try{
+        try
+        {
 
         }
         catch (Exception e){

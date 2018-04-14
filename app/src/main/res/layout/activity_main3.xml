@@ -15,16 +15,20 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:text="Inscription!"
-        android:textSize="36sp" />
+        android:textColor="#ff871d"
+        android:textColorLink="#ff871d"
+        android:textSize="36sp"
+        app:fontFamily="@font/bubblegum_sans" />
 
     <TextView
         android:id="@+id/txtConsigneInscription"
-        android:layout_width="wrap_content"
+        android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="89dp"
         android:text="Afin de poursuivre votre inscription, veuillez remplir les champs suivants:"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <TextView
@@ -33,19 +37,21 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtIdentifiantInscription"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
         android:text="Identifiant:"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txtIdentifiantInscription"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/txtConsigneInscription"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="22dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -53,50 +59,50 @@
         android:id="@+id/lblMotDePasseInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="230dp"
+        android:layout_alignBaseline="@+id/txtMotDePasseInscription"
+        android:layout_toStartOf="@+id/lblTitreInscription"
         android:text="Mot de passe:"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txtMotDePasseInscription"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_alignBottom="@+id/lblMotDePasseInscription"
+        android:layout_height="wrap_content"
         android:layout_alignStart="@+id/txtIdentifiantInscription"
+        android:layout_below="@+id/lblIdentifiantInscription"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorLink="#ff871d" />
 
     <Spinner
         android:id="@+id/spinnerPaysInscription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:layout_alignEnd="@+id/txtMotDePasseInscription"
         android:layout_alignLeft="@+id/txtMotDePasseInscription"
         android:layout_alignRight="@+id/txtMotDePasseInscription"
         android:layout_alignStart="@+id/txtMotDePasseInscription"
         android:layout_below="@+id/txtMotDePasseInscription"
-        android:layout_marginTop="19dp" />
+        android:layout_marginTop="1dp" />
 
     <TextView
         android:id="@+id/lblPaysInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/lblMotDePasseInscription"
-        android:layout_alignStart="@+id/lblMotDePasseInscription"
-        android:layout_alignTop="@+id/spinnerPaysInscription"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lblIdentifiantInscription"
+        android:layout_marginTop="254dp"
         android:text="Pays:"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txtCourrielInscription"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_alignLeft="@+id/spinnerPaysInscription"
-        android:layout_alignStart="@+id/spinnerPaysInscription"
-        android:layout_below="@+id/lblPaysInscription"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtIdentifiantInscription"
+        android:layout_below="@+id/spinnerPaysInscription"
         android:ems="10"
         android:inputType="textEmailAddress" />
 
@@ -109,16 +115,35 @@
         android:layout_alignLeft="@+id/lblPaysInscription"
         android:layout_alignStart="@+id/lblPaysInscription"
         android:text="Courriel:"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/btnInscription"
         android:layout_width="151dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCourrielInscription"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
+        android:layout_marginBottom="52dp"
         android:background="#ff871d"
         android:text="Inscrivez-moi!"
         android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="129dp"
+        android:layout_height="118dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/txtConsigneInscription"
+        android:layout_marginBottom="134dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/btnChoisirImage"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/txtIdentifiantInscription"
+        android:layout_marginBottom="174dp"
+        android:text="Choisir une image" />
 </RelativeLayout>
