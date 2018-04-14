@@ -24,19 +24,10 @@
             android:id="@+id/nav_decouverte"
             android:icon="@drawable/ic_search"
             android:title="Découvrir" />
+        <item
+            android:id="@+id/nav_deconnexion"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Déconnexion" />
     </group>
-
-    <item android:title="Paramètres">
-        <menu>
-            <item
-                android:id="@+id/nav_configuration"
-                android:icon="@drawable/ic_settings"
-                android:title="Configuration" />
-            <item
-                android:id="@+id/nav_deconnexion"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Déconnexion" />
-        </menu>
-    </item>
 
 </menu>

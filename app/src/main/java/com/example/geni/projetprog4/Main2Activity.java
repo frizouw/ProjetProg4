@@ -80,22 +80,31 @@ public class Main2Activity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-
         int id = item.getItemId();
+        FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_profile) {
+        if (id == R.id.nav_profile)
+        {
+            fragmentManager.beginTransaction().replace(R.id.content_main2, new ProfileFragment()).commit();
+        }
+        else if (id == R.id.nav_mes_recettes)
+        {
 
-        } else if (id == R.id.nav_mes_recettes) {
+        }
+        else if (id == R.id.nav_amies)
+        {
 
-        } else if (id == R.id.nav_amies) {
+        }
+        else if (id == R.id.nav_calendrier)
+        {
 
-        } else if (id == R.id.nav_calendrier) {
+        }
+        else if (id == R.id.nav_decouverte)
+        {
 
-        } else if (id == R.id.nav_decouverte) {
-
-        } else if (id == R.id.nav_configuration) {
-
-        }else if (id == R.id.nav_deconnexion) {
+        }
+        else if (id == R.id.nav_deconnexion)
+        {
 
         }
 

@@ -9,5 +9,9 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        //Titre de l'activité
+        setTitle("Inscription");
+        //Activation du bouton précédent dans la barre d'action : la direction est programmé dans AndroidManifest.xml
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lblUsernameProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgAvatarProfile"
+        android:layout_centerHorizontal="true"
+        android:text="Username :"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/imgAvatarProfile"
+        android:layout_width="125dp"
+        android:layout_height="151dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btnSupprimerCompte"
+        android:layout_marginStart="-6dp"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@mipmap/ic_launcher_round"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/lblCourrielProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_marginTop="71dp"
+        android:text="Courriel :"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="63dp" />
+
+    <ImageView
+        android:id="@+id/imgPointage"
+        android:layout_width="31dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_marginTop="125dp"
+        app:srcCompat="@drawable/ic_currency"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <TextView
+        android:id="@+id/txtCourrielProfile"
+        android:layout_width="188dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_marginTop="98dp"
+        android:text="Patate3@gmail.ca"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="82dp" />
+
+    <TextView
+        android:id="@+id/txtUsernameProfile2"
+        android:layout_width="188dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lblUsernameProfile"
+        android:layout_marginTop="43dp"
+        android:text="Patate3000"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="35dp" />
+
+    <TextView
+        android:id="@+id/txtPointage"
+        android:layout_width="151dp"
+        android:layout_height="23dp"
+        android:layout_alignBottom="@+id/imgPointage"
+        android:layout_alignEnd="@+id/txtCourrielProfile"
+        android:text="35264"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <Button
+        android:id="@+id/btnSupprimerCompte"
+        android:layout_width="327dp"
+        android:layout_height="47dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:text="Supprimer mon compte"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="448dp" />
+</RelativeLayout>
