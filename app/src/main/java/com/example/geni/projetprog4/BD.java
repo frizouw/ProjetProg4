@@ -25,9 +25,9 @@ public class BD {
             //Table des recettes
             sql.execSQL("CREATE TABLE IF NOT EXISTS Recettes(NumeroRecette INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NomRecette VARCHAR(50), PaysRecette VARCHAR(50), NiveauRecette INTEGER, DureePrep INTEGER, DureeCuisson INTEGER, Ingredients VARCHAR(200), TypePlat VARCHAR(50), Calories INTEGER, Preparation VARCHAR(150))");
             //Table des commentaires
-            sql.execSQL("CREATE TABLE IF NOT EXISTS Commentaire(NumeroCommentaire INTEGER PRIMARY KEY NOT NULL, Note INTEGER NOT NULL, FOREIGN KEY(IdUtilisateur VARCHAR(50))) REFERENCES Utilisateurs(IdUtilisateur), FOREIGN KEY(NumeroRecette INTEGER) REFERENCES Recettes(NumeroRecette) ");
+            sql.execSQL("CREATE TABLE IF NOT EXISTS Commentaires(NumeroCommentaire INTEGER PRIMARY KEY NOT NULL, Note INTEGER NOT NULL, FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateurs(IdUtilisateur), FOREIGN KEY(NumeroRecette) REFERENCES Recettes(NumeroRecette))");
             //Table UtilisateurRecette
-            sql.execSQL("CREATE TABLE IF NOT EXISTS UtilisateurRecette()");
+            //sql.execSQL("CREATE TABLE IF NOT EXISTS UtilisateurRecette()");
         }
         catch (Exception ex)
         {
@@ -50,9 +50,10 @@ public class BD {
     }
 
     //Insérer des recettes dans la base de données
-    public void insertRecette(String nomRecette, String paysRecette, Integer NiveauRecette, Integer dureePrep, Integer dureeCuisson, String Ingredients, String typePlat, Integer Calories, String Preparations){
-        try{
-            sql.execSQL(String.format("INSERT INTO Recette(NomRecette, PaysRecette, NiveauRecette, DureePrep, DureeCuisson, Ingredients, TypePlat, Calories, Preparation) VALUES ('%s', '%s', '%s', '%s','%s','%s','%s','%s','%s' )",nomRecette ,paysRecette , NiveauRecette, dureePrep,dureeCuisson, Ingredients,typePlat,Calories,Preparations));
+    public void insererRecette(String nomRecette, String paysRecette, Integer NiveauRecette, Integer dureePrep, Integer dureeCuisson, String Ingredients, String typePlat, Integer Calories, String Preparations){
+        try
+        {
+            sql.execSQL(String.format("INSERT INTO Recettes(NomRecette, PaysRecette, NiveauRecette, DureePrep, DureeCuisson, Ingredients, TypePlat, Calories, Preparation) VALUES ('%s', '%s', '%s', '%s','%s','%s','%s','%s','%s' )",nomRecette ,paysRecette , NiveauRecette, dureePrep,dureeCuisson, Ingredients,typePlat,Calories,Preparations));
         }
         catch (Exception e){
             e.printStackTrace();
@@ -60,7 +61,7 @@ public class BD {
     }
 
     //Insert des commentaires dans la table des commentaires
-    public void insertCommentaire()
+    public void insererCommentaire()
     {
         try{
 
