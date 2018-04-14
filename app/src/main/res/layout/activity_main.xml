@@ -76,7 +76,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="185dp"
         android:text="Se souvenir de moi"
-        android:textColor="@android:color/white"
-        android:textColorLink="#ff881f" />
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context="com.example.geni.projetprog4.Main3Activity">
 
     <TextView
@@ -20,12 +21,9 @@
         android:id="@+id/txtConsigneInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/txtIdentifiantInscription"
-        android:layout_alignLeft="@+id/lblIdentifiantInscription"
-        android:layout_alignRight="@+id/txtIdentifiantInscription"
-        android:layout_alignStart="@+id/lblIdentifiantInscription"
-        android:layout_below="@+id/lblTitreInscription"
-        android:layout_marginTop="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp"
         android:text="Afin de poursuivre votre inscription, veuillez remplir les champs suivants:"
         android:textSize="18sp" />
 
@@ -33,17 +31,15 @@
         android:id="@+id/lblIdentifiantInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/txtIdentifiantInscription"
         android:layout_alignBottom="@+id/txtIdentifiantInscription"
-        android:layout_toLeftOf="@+id/lblTitreInscription"
-        android:layout_toStartOf="@+id/lblTitreInscription"
+        android:layout_alignParentStart="true"
         android:text="Identifiant:"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txtIdentifiantInscription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="31dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/txtConsigneInscription"
@@ -57,19 +53,17 @@
         android:id="@+id/lblMotDePasseInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/lblIdentifiantInscription"
-        android:layout_alignStart="@+id/lblIdentifiantInscription"
-        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="230dp"
         android:text="Mot de passe:"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txtMotDePasseInscription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/lblMotDePasseInscription"
+        android:layout_height="31dp"
         android:layout_alignBottom="@+id/lblMotDePasseInscription"
-        android:layout_alignLeft="@+id/txtIdentifiantInscription"
         android:layout_alignStart="@+id/txtIdentifiantInscription"
         android:ems="10"
         android:inputType="textPersonName" />
@@ -98,7 +92,7 @@
     <EditText
         android:id="@+id/txtCourrielInscription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="31dp"
         android:layout_alignLeft="@+id/spinnerPaysInscription"
         android:layout_alignStart="@+id/spinnerPaysInscription"
         android:layout_below="@+id/lblPaysInscription"
@@ -119,10 +113,12 @@
 
     <Button
         android:id="@+id/btnInscription"
-        android:layout_width="wrap_content"
+        android:layout_width="151dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtCourrielInscription"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
-        android:text="Inscrivez-moi!" />
+        android:background="#ff871d"
+        android:text="Inscrivez-moi!"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
