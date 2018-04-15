@@ -53,7 +53,8 @@
         android:layout_marginRight="28dp"
         android:layout_marginTop="22dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="#f4f4f4" />
 
     <TextView
         android:id="@+id/lblMotDePasseInscription"
@@ -73,6 +74,7 @@
         android:layout_below="@+id/lblIdentifiantInscription"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#f4f4f4"
         android:textColorLink="#ff871d" />
 
     <Spinner
@@ -104,7 +106,8 @@
         android:layout_alignStart="@+id/txtIdentifiantInscription"
         android:layout_below="@+id/spinnerPaysInscription"
         android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="#f4f4f4" />
 
     <TextView
         android:id="@+id/lblCourrielInscription"
