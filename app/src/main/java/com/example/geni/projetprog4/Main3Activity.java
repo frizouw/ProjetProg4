@@ -49,6 +49,7 @@ public class Main3Activity extends AppCompatActivity {
         bd.createTable();
 
         /*ÉVÉNEMENTS
+        SOURCE : https://www.youtube.com/watch?v=4bU9cZsJRLI&t=548s
         Choisir une image dans son téléphone*/
         btnChoisirImage.setOnClickListener(new View.OnClickListener() {
             @Override
