@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtIdentifiant, txtMotDePasse;
     private CheckBox checkSouvenir;
     private SharedPreferences pref;
+    public static BD bd;
     private static final String NOM_PREF = "sharedPrefs";
 
     @Override
@@ -38,8 +40,13 @@ public class MainActivity extends AppCompatActivity {
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (bd.validationCompte(txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString()) == true)
+                {
+                    seConnecter();
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Votre nom d'utilisateur ou votre mot de passe ne correspond pas", Toast.LENGTH_SHORT).show();
 
-                seConnecter();
             }
 
         });
