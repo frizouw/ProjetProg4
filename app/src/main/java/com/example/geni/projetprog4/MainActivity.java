@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtIdentifiant, txtMotDePasse;
     private CheckBox checkSouvenir;
     private SharedPreferences pref;
-    public static BD bd;
+    private BD bd;
     private static final String NOM_PREF = "sharedPrefs";
 
     @Override
@@ -35,12 +35,13 @@ public class MainActivity extends AppCompatActivity {
         txtMotDePasse = (EditText) findViewById(R.id.txtMotDePasseConnexion);
         checkSouvenir = (CheckBox) findViewById(R.id.checkBoxMemoriser);
         chargement();
+        bd = new BD(openOrCreateDatabase("CookingJarBD", MODE_PRIVATE, null));
 
         //LE BOUTON POUR SE CONNECTER
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bd.validationCompte(txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString()) == true)
+                if (bd.validationCompte(txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString()))
                 {
                     seConnecter();
                 }
