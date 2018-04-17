@@ -84,7 +84,7 @@ public class Main3Activity extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(Main3Activity.this, "Vous n'avez pas la permission d'accèder à vos photos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main3Activity.this, "Vous n'avez pas la permission d'accèder à vos albums photos", Toast.LENGTH_SHORT).show();
             }
 
             return;
