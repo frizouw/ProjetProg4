@@ -13,7 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -22,8 +24,14 @@ import java.io.InputStream;
 
 public class Main3Activity extends AppCompatActivity {
 
+    //Activite page du login quand un nouvel utilisateur veut se connecter
+    //XML: activity_main3.xml
+
     //PROPRIÉTÉS
     private ImageView avatar;                   //Représente l'ImageView de l'avatar
+    private EditText idUtilisateur;             //Représente le edittext de l'identifiant de l'utilisateur
+    private EditText motPasse                   //Représente le editext du mot de passe de l'identifiant
+    private Spinner pays;                       //Représente le spinner pour la selection du pays
     private Button btnChoisirImage;             //Représente le bouton qui aide l'utilisateur à choisir l'image
     private Button btnInscrire;                 //Représente le bouton pour s'inscrire
     public static BD bd;                        //Représente la base de données
@@ -42,6 +50,9 @@ public class Main3Activity extends AppCompatActivity {
         avatar = (ImageView) findViewById(R.id.imgAvatar);
         btnChoisirImage = (Button) findViewById(R.id.btnChoisirImage);
         btnInscrire = (Button) findViewById(R.id.btnInscription);
+        idUtilisateur = (EditText)findViewById(R.id.txtIdentifiantInscription);
+        pays = (Spinner)findViewById(R.id.spinnerPaysInscription);
+        motPasse = (EditText)findViewById(R.id.txtMotDePasseInscription);
 
         //Création de la BD
         bd = new BD(openOrCreateDatabase("CookingJarBD", MODE_PRIVATE, null));
@@ -63,7 +74,9 @@ public class Main3Activity extends AppCompatActivity {
         btnInscrire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //insert dans la table des utilisateurs
+                bd.insererUtilisateurs(idUtilisateur.getText().toString(),motPasse.getText().toString(),pays.toString(), avatar);
+                //Courriel?
             }
 
         });
