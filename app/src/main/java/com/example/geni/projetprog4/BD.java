@@ -22,11 +22,11 @@ public class BD {
         try
         {
             //Table des utilisateurs
-            sql.execSQL("CREATE TABLE IF NOT EXISTS Utilisateurs(IdUtilisateur VARCHAR(50) PRIMARY KEY NOT NULL, MotDePasse VARCHAR(50) NOT NULL, Pays VARCHAR(50), Courriel VARCHAR(100) NOT NULL, Image Blob,  Pointage INTEGER)");
+            sql.execSQL("CREATE TABLE IF NOT EXISTS Utilisateurs(IdUtilisateur VARCHAR(50) PRIMARY KEY NOT NULL, MotDePasse VARCHAR(50) NOT NULL, Pays VARCHAR(50), Courriel VARCHAR(100) NOT NULL, Image blob,  Pointage INTEGER)");
             //Table des recettes
             sql.execSQL("CREATE TABLE IF NOT EXISTS Recettes(NumeroRecette INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NomRecette VARCHAR(50), PaysRecette VARCHAR(50), NiveauRecette INTEGER, DureePrep INTEGER, DureeCuisson INTEGER, Ingredients VARCHAR(200), TypePlat VARCHAR(50), Calories INTEGER, Preparation VARCHAR(150))");
             //Table des commentaires
-            sql.execSQL("CREATE TABLE IF NOT EXISTS Commentaires(NumeroCommentaire INTEGER PRIMARY KEY NOT NULL, Note INTEGER NOT NULL, FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateurs(IdUtilisateur), FOREIGN KEY(NumeroRecette) REFERENCES Recettes(NumeroRecette))");
+            sql.execSQL("CREATE TABLE IF NOT EXISTS Commentaires(NumeroCommentaire INTEGER PRIMARY KEY NOT NULL, Note INTEGER NOT NULL, IdUtilisateur VARCHAR(50),NumeroRecette INTEGER, FOREIGN KEY(IdUtilisateur) REFERENCES Utilisateurs(IdUtilisateur), FOREIGN KEY(NumeroRecette) REFERENCES Recettes(NumeroRecette))");
             //Table UtilisateurRecette
             //sql.execSQL("CREATE TABLE IF NOT EXISTS UtilisateurRecette()");
         }
@@ -42,7 +42,7 @@ public class BD {
     {
         try
         {
-            sql.execSQL(String.format("INSERT INTO Utilisateurs(IdUtilisateur, MotDePasse, Pays, Courriel, Avatar) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", Identifiant, MotDePasse, Pays, Courriel, Avatar));
+            sql.execSQL(String.format("INSERT INTO Utilisateurs(IdUtilisateur, MotDePasse, Pays, Courriel, Image, Pointage) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", Identifiant, MotDePasse, Pays, Courriel, Avatar, 150));
         }
         catch (Exception ex)
         {
@@ -83,7 +83,7 @@ public class BD {
             c.moveToFirst();
             while (c != null)
             {
-                if(c.getString(c.getColumnIndex("IdUtilisateurs")).equals(Identifiant))
+                if(c.getString(c.getColumnIndex("IdUtilisateur")).equals(Identifiant))
                 {
                     return true;
                 }

@@ -92,10 +92,18 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Vérifie avant si l'utilisateur existe déja
-                bd.utilisateurExiste(idUtilisateur.getText().toString());
-                //insert dans la table des utilisateurs
-                bd.insererUtilisateurs(idUtilisateur.getText().toString(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), imageViewToByte(avatar));
-                Toast.makeText(Main3Activity.this, "Inscription réussi!", Toast.LENGTH_SHORT);
+                if (bd.utilisateurExiste(idUtilisateur.getText().toString()) == true)
+                {
+                    Toast.makeText(Main3Activity.this, "Ce compte existe déja", Toast.LENGTH_SHORT).show();
+                }
+                else if (bd.utilisateurExiste(idUtilisateur.getText().toString()) == false)
+                {
+                    //insert dans la table des utilisateurs
+                    bd.insererUtilisateurs(idUtilisateur.getText().toString(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), imageViewToByte(avatar));
+                    Toast.makeText(Main3Activity.this, "Inscription réussi!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(Main3Activity.this, "Il manque quelque chose!", Toast.LENGTH_SHORT).show();
             }
 
         });
