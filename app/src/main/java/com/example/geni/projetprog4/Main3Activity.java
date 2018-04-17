@@ -91,6 +91,8 @@ public class Main3Activity extends AppCompatActivity {
         btnInscrire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Vérifie avant si l'utilisateur existe déja
+                bd.utilisateurExiste(idUtilisateur.getText().toString());
                 //insert dans la table des utilisateurs
                 bd.insererUtilisateurs(idUtilisateur.getText().toString(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), imageViewToByte(avatar));
                 Toast.makeText(Main3Activity.this, "Inscription réussi!", Toast.LENGTH_SHORT);
