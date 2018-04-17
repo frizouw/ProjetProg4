@@ -22,7 +22,7 @@ public class BD {
         try
         {
             //Table des utilisateurs
-            sql.execSQL("CREATE TABLE IF NOT EXISTS Utilisateurs(IdUtilisateur VARCHAR(50) PRIMARY KEY NOT NULL, MotDePasse VARCHAR(50) NOT NULL, Pays VARCHAR(50), Courriel VARCHAR(100) NOT NULL, Image blob,  Pointage INTEGER)");
+            sql.execSQL("CREATE TABLE IF NOT EXISTS Utilisateurs(IdUtilisateur VARCHAR(50) PRIMARY KEY NOT NULL, MotDePasse VARCHAR(50) NOT NULL, Pays VARCHAR(50), Courriel VARCHAR(100) NOT NULL, Image Blob,  Pointage INTEGER)");
             //Table des recettes
             sql.execSQL("CREATE TABLE IF NOT EXISTS Recettes(NumeroRecette INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NomRecette VARCHAR(50), PaysRecette VARCHAR(50), NiveauRecette INTEGER, DureePrep INTEGER, DureeCuisson INTEGER, Ingredients VARCHAR(200), TypePlat VARCHAR(50), Calories INTEGER, Preparation VARCHAR(150))");
             //Table des commentaires

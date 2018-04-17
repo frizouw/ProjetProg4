@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main3Activity extends AppCompatActivity {
 
@@ -30,12 +33,13 @@ public class Main3Activity extends AppCompatActivity {
     //PROPRIÉTÉS
     private ImageView avatar;                   //Représente l'ImageView de l'avatar
     private EditText idUtilisateur;             //Représente le edittext de l'identifiant de l'utilisateur
-    private EditText motPasse                   //Représente le editext du mot de passe de l'identifiant
+    private EditText motPasse;                  //Représente le editext du mot de passe de l'identifiant
+    private EditText courriel;                  //Représente le courriel de l'utilisateur
     private Spinner pays;                       //Représente le spinner pour la selection du pays
     private Button btnChoisirImage;             //Représente le bouton qui aide l'utilisateur à choisir l'image
     private Button btnInscrire;                 //Représente le bouton pour s'inscrire
     public static BD bd;                        //Représente la base de données
-    final int REQUEST_CODE_GALLERY = 999;             //Représente le code pour accèder à la gallerie
+    final int REQUEST_CODE_GALLERY = 999;       //Représente le code pour accèder à la gallerie
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +57,24 @@ public class Main3Activity extends AppCompatActivity {
         idUtilisateur = (EditText)findViewById(R.id.txtIdentifiantInscription);
         pays = (Spinner)findViewById(R.id.spinnerPaysInscription);
         motPasse = (EditText)findViewById(R.id.txtMotDePasseInscription);
+        courriel = (EditText) findViewById(R.id.txtCourrielInscription);
 
         //Création de la BD
         bd = new BD(openOrCreateDatabase("CookingJarBD", MODE_PRIVATE, null));
         //Création des tables
         bd.createTable();
+
+        //Remplir le spinner de pays
+        List<String> spinnerPays = new ArrayList<String>();
+        spinnerPays.add("Canada");
+        spinnerPays.add("États-unis");
+        spinnerPays.add("France");
+        spinnerPays.add("Japon");
+        spinnerPays.add("Chine");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerPays);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinnerPaysItems = (Spinner) findViewById(R.id.spinnerPaysInscription);
+        spinnerPaysItems.setAdapter(adapter);
 
         /*ÉVÉNEMENTS
         SOURCE : https://www.youtube.com/watch?v=4bU9cZsJRLI&t=548s
@@ -75,8 +92,8 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //insert dans la table des utilisateurs
-                bd.insererUtilisateurs(idUtilisateur.getText().toString(),motPasse.getText().toString(),pays.toString(), avatar);
-                //Courriel?
+                bd.insererUtilisateurs(idUtilisateur.getText().toString(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), imageViewToByte(avatar));
+                Toast.makeText(Main3Activity.this, "Inscription réussi!", Toast.LENGTH_SHORT);
             }
 
         });
@@ -106,6 +123,7 @@ public class Main3Activity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    //Méthode pour insérer l'image
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -124,5 +142,15 @@ public class Main3Activity extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    //Méthode pour convertir l'image en byte afin de l'insérer dans la base de donnée
+    private byte[] imageViewToByte (ImageView image)
+    {
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] tableauBytes = stream.toByteArray();
+        return tableauBytes;
     }
 }
