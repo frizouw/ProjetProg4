@@ -34,12 +34,17 @@ public class Main2Activity extends AppCompatActivity
         setContentView(R.layout.activity_main2);
 
         /*Pour associer le username de l'utilisateur qui s'est connecté
-        SOURCE: https://stackoverflow.com/questions/33560219/in-android-how-to-set-navigation-drawer-header-image-and-name-programmatically-i*/
+        SOURCE: https://stackoverflow.com/questions/33560219/in-android-how-to-set-navigation-drawer-header-image-and-name-programmatically-i
+        Pour accèder au nav_header_main2.xml*/
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         View view = navigationView.getHeaderView(0);
+        //Aller chercher le textview de la navigation
         txtUsername = (TextView) view.findViewById(R.id.txtUsernameHeader);
+        //Récupérer l'intent
         Intent intent = getIntent();
+        //Emmagasiner l'extra du username dans une variable *Peut être optimisé I guess*
         String username = (String) intent.getStringExtra("Identifiant");
+        //Implément le TextView
         txtUsername.setText(username);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
