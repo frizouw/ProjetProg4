@@ -122,6 +122,10 @@ public class Main2Activity extends AppCompatActivity
         {
 
         }
+        else if (id == R.id.nav_epicerie)
+        {
+
+        }
         else if (id == R.id.nav_decouverte)
         {
 
