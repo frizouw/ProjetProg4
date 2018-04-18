@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Page a l'ouverture de l'application, page de login
+    //XML: activity_main
+
     //PROPRIÉTÉS
     private Button btnConnexion;
     private TextView txtInscription;
