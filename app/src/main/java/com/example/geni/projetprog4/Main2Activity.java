@@ -1,6 +1,8 @@
 package com.example.geni.projetprog4;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -100,7 +102,11 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_profile)
+        if (id == R.id.nav_home)
+        {
+
+        }
+        else if (id == R.id.nav_profile)
         {
             fragmentManager.beginTransaction().replace(R.id.content_main2, new ProfileFragment()).commit();
         }
@@ -122,7 +128,21 @@ public class Main2Activity extends AppCompatActivity
         }
         else if (id == R.id.nav_deconnexion)
         {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder
+            .setTitle("Déconnexion")
+            .setMessage("Êtes-vous sure de vouloir vous déconnectez?")
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
+                    Intent retour = new Intent(Main2Activity.this, MainActivity.class);
+                    startActivity(retour);
+                }
+            })
+            .setNegativeButton("Non", null)
+            .show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
