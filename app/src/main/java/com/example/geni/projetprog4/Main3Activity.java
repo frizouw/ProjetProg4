@@ -103,7 +103,7 @@ public class Main3Activity extends AppCompatActivity {
                     Toast.makeText(Main3Activity.this, "Inscription réussi!", Toast.LENGTH_SHORT).show();
                 }
                 else
-                    Toast.makeText(Main3Activity.this, "Il manque quelque chose!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main3Activity.this, "Oops.. Une information est manquante!", Toast.LENGTH_SHORT).show();
             }
 
         });

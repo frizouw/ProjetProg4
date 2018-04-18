@@ -1,6 +1,7 @@
 package com.example.geni.projetprog4;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,10 +24,24 @@ public class Main2Activity extends AppCompatActivity
     //Drawer sur le cote gauche
     //XML: activite_main2.xml
 
+    //PROPRIÉTÉS
+    private NavigationView navigationView;
+    private TextView txtUsername;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        /*Pour associer le username de l'utilisateur qui s'est connecté
+        SOURCE: https://stackoverflow.com/questions/33560219/in-android-how-to-set-navigation-drawer-header-image-and-name-programmatically-i*/
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View view = navigationView.getHeaderView(0);
+        txtUsername = (TextView) view.findViewById(R.id.txtUsernameHeader);
+        Intent intent = getIntent();
+        String username = (String) intent.getStringExtra("Identifiant");
+        txtUsername.setText(username);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Bonjour");
