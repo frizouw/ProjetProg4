@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 public class ProfileFragment extends Fragment {
 
+    //Le fragment du profile lorsqu'on choisi profile dans le drawer
     View vue;
 
     @Nullable
