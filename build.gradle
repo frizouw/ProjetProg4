@@ -19,6 +19,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+
+        //add from: https://www.youtube.com/watch?v=sTJm1Ys9jMI
+        maven{url 'https://jitpack.io'}
     }
 }
 
