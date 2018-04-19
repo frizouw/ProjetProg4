@@ -1,6 +1,9 @@
 package com.example.geni.projetprog4;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,10 +26,29 @@ public class Main2Activity extends AppCompatActivity
     //Drawer sur le cote gauche
     //XML: activite_main2.xml
 
+    //PROPRIÉTÉS
+    private NavigationView navigationView;
+    private TextView txtUsername;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        /*Pour associer le username de l'utilisateur qui s'est connecté
+        SOURCE: https://stackoverflow.com/questions/33560219/in-android-how-to-set-navigation-drawer-header-image-and-name-programmatically-i
+        Pour accèder au nav_header_main2.xml*/
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View view = navigationView.getHeaderView(0);
+        //Aller chercher le textview de la navigation
+        txtUsername = (TextView) view.findViewById(R.id.txtUsernameHeader);
+        //Récupérer l'intent
+        Intent intent = getIntent();
+        //Emmagasiner l'extra du username dans une variable *Peut être optimisé I guess*
+        String username = (String) intent.getStringExtra("Identifiant");
+        //Implément le TextView
+        txtUsername.setText(username);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Bonjour");
@@ -77,7 +102,11 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_profile)
+        if (id == R.id.nav_home)
+        {
+
+        }
+        else if (id == R.id.nav_profile)
         {
             fragmentManager.beginTransaction().replace(R.id.content_main2, new ProfileFragment()).commit();
         }
@@ -93,6 +122,10 @@ public class Main2Activity extends AppCompatActivity
         {
 
         }
+        else if (id == R.id.nav_epicerie)
+        {
+
+        }
         else if (id == R.id.nav_decouverte)
         {
             //la liste de toutes les recettes disponibles
@@ -100,7 +133,21 @@ public class Main2Activity extends AppCompatActivity
         }
         else if (id == R.id.nav_deconnexion)
         {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder
+            .setTitle("Déconnexion")
+            .setMessage("Êtes-vous sure de vouloir vous déconnectez?")
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
+                    Intent retour = new Intent(Main2Activity.this, MainActivity.class);
+                    startActivity(retour);
+                }
+            })
+            .setNegativeButton("Non", null)
+            .show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

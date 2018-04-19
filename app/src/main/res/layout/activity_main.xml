@@ -27,7 +27,8 @@
         android:drawableLeft="@drawable/ic_person"
         android:ems="10"
         android:hint="Username"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/txtMotDePasseConnexion"
@@ -41,7 +42,8 @@
         android:ems="10"
         android:hint="Mot de passe"
         android:inputType="textPassword"
-        android:password="true" />
+        android:password="true"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/txtInscription"
