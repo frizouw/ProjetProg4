@@ -37,7 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtIdentifiantInscription"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="Identifiant:"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
@@ -62,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/txtMotDePasseInscription"
         android:layout_toStartOf="@+id/lblTitreInscription"
+        android:layout_toLeftOf="@+id/lblTitreInscription"
         android:text="Mot de passe:"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
@@ -71,9 +74,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/txtIdentifiantInscription"
+        android:layout_alignLeft="@+id/txtIdentifiantInscription"
         android:layout_below="@+id/lblIdentifiantInscription"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="#f4f4f4"
         android:textColorLink="#ff871d" />
 
@@ -94,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/lblIdentifiantInscription"
+        android:layout_alignLeft="@+id/lblIdentifiantInscription"
         android:layout_marginTop="254dp"
         android:text="Pays:"
         android:textColor="@android:color/white"
@@ -104,6 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/txtIdentifiantInscription"
+        android:layout_alignLeft="@+id/txtIdentifiantInscription"
         android:layout_below="@+id/spinnerPaysInscription"
         android:ems="10"
         android:inputType="textEmailAddress"
@@ -138,8 +144,9 @@
         android:layout_height="118dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/txtConsigneInscription"
+        android:layout_alignLeft="@+id/txtConsigneInscription"
         android:layout_marginBottom="134dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <Button
         android:id="@+id/btnChoisirImage"
@@ -147,6 +154,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/txtIdentifiantInscription"
+        android:layout_alignLeft="@+id/txtIdentifiantInscription"
         android:layout_marginBottom="174dp"
         android:text="Choisir une image" />
 </RelativeLayout>

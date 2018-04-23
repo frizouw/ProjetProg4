@@ -12,8 +12,8 @@ import java.util.List;
 
 import in.goodiebag.carouselpicker.CarouselPicker;
 
-public class RecettesCarousel extends Fragment {
-
+public class RecettesCarousel extends Fragment
+{
     View v;
     CarouselPicker carouselPicker1, carouselPicker2, carouselPicker3;
 
@@ -32,7 +32,7 @@ public class RecettesCarousel extends Fragment {
         itemsImages1.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher));
         itemsImages1.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher_round));
         itemsImages1.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher));
-        CarouselPicker.CarouselViewAdapter imageAdapter = new CarouselPicker.CarouselViewAdapter(this,itemsImages1,0);
+        CarouselPicker.CarouselViewAdapter imageAdapter = new CarouselPicker.CarouselViewAdapter(getActivity(),itemsImages1,0);
         carouselPicker1.setAdapter(imageAdapter);
 
         //Carousel 2 with text
@@ -41,7 +41,7 @@ public class RecettesCarousel extends Fragment {
         itemsText.add(new CarouselPicker.TextItem("One",20));
         itemsText.add(new CarouselPicker.TextItem("Two",20));
         itemsText.add(new CarouselPicker.TextItem("Three",20));
-        CarouselPicker.CarouselViewAdapter textAdapter = new CarouselPicker.CarouselViewAdapter(this,itemsText,0);
+        CarouselPicker.CarouselViewAdapter textAdapter = new CarouselPicker.CarouselViewAdapter(getActivity(),itemsText,0);
         carouselPicker2.setAdapter(textAdapter);
 
         //Carousel 3 with mix
@@ -50,7 +50,7 @@ public class RecettesCarousel extends Fragment {
         mixItems.add(new CarouselPicker.TextItem("One",20));
         mixItems.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher));
         mixItems.add(new CarouselPicker.TextItem("Three",20));
-        CarouselPicker.CarouselViewAdapter mixAdapter = new CarouselPicker.CarouselViewAdapter(this,mixItems,0);
+        CarouselPicker.CarouselViewAdapter mixAdapter = new CarouselPicker.CarouselViewAdapter(getActivity(),mixItems,0);
         carouselPicker3.setAdapter(mixAdapter);
         return v;
     }

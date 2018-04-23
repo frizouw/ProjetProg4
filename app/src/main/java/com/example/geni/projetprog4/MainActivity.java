@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (bd.validationCompte(txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString()))
-                {
                     seConnecter();
-                }
                 else
                     Toast.makeText(MainActivity.this, "Votre nom d'utilisateur ou votre mot de passe ne correspond pas", Toast.LENGTH_SHORT).show();
 
@@ -58,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         //LE BOUTON POUR S'INSCRIRE
         txtInscription.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v)
+            {
                 Intent intentInscription = new Intent(MainActivity.this, Main3Activity.class);
                 startActivity(intentInscription);
             }

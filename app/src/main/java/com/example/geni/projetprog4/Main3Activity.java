@@ -92,11 +92,11 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Vérifie avant si l'utilisateur existe déja
-                if (bd.utilisateurExiste(idUtilisateur.getText().toString()) == true)
+                if (bd.utilisateurExiste(idUtilisateur.getText().toString()))
                 {
                     Toast.makeText(Main3Activity.this, "Ce compte existe déja", Toast.LENGTH_SHORT).show();
                 }
-                else if (bd.utilisateurExiste(idUtilisateur.getText().toString()) == false)
+                else if (!bd.utilisateurExiste(idUtilisateur.getText().toString()))
                 {
                     //insert dans la table des utilisateurs
                     bd.insererUtilisateurs(idUtilisateur.getText().toString(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), imageViewToByte(avatar));

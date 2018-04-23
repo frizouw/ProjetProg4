@@ -61,6 +61,8 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        // set le fragment de départ
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     @Override
@@ -104,7 +106,7 @@ public class Main2Activity extends AppCompatActivity
 
         if (id == R.id.nav_home)
         {
-
+            fragmentManager.beginTransaction().replace(R.id.content_main2, new RecettesCarousel()).commit();
         }
         else if (id == R.id.nav_profile)
         {
