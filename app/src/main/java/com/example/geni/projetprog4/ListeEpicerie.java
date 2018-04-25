@@ -3,13 +3,16 @@ package com.example.geni.projetprog4;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ public class ListeEpicerie extends Fragment {
 
     View v;
     ListView listeEpicerie;
+    CheckBox check;
 
     @Nullable
     @Override
@@ -25,17 +29,12 @@ public class ListeEpicerie extends Fragment {
         //associer le layout de la liste a la classe
         v = inflater.inflate(R.layout.liste_epicerie,container,false);
         listeEpicerie = (ListView)v.findViewById(R.id.listeEpicerie);
+        check = (CheckBox)v.findViewById(R.id.list_view_item_checkbox);
+        //MODE
         listeEpicerie.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        //listeEpicerie.setChoiceMode(ListView.CHOICE_MODE_NONE);
 
-        //TEST
-        String[] values = new String[] { "Pomme","patate", "Boeuf", };
-
-        final ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
-        ArrayAdapter<String>adapter = new ArrayAdapter<>( getActivity(),R.layout.liste_epicerie,list);
-        listeEpicerie.setAdapter(adapter);
+        listeEpicerie.setAdapter( new ListeEpicerieAdapter(getActivity(),new String[] { "Pomme","patate", "Boeuf", }));
 
         //lors de la selection
         listeEpicerie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
