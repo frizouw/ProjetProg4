@@ -126,7 +126,7 @@ public class Main2Activity extends AppCompatActivity
         }
         else if (id == R.id.nav_epicerie)
         {
-
+            fragmentManager.beginTransaction().replace(R.id.content_main2,new ListeEpicerie()).commit();
         }
         else if (id == R.id.nav_decouverte)
         {
