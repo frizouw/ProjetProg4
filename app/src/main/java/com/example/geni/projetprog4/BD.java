@@ -132,4 +132,8 @@ public class BD {
         }
         return false;
     }
+
+    //Aller chercher avatar
+    //Aller chercher pointage
+    //Aller chercher courriel
 }
