@@ -112,7 +112,7 @@ public class Main3Activity extends AppCompatActivity {
 
     }
 
-    //Connaître si la demande a été accepté ou non, pour accèder à la gallerie d'image pour l'avatar
+    //Connaître si la demande a été acceptée ou non, pour accèder à la gallerie d'image pour l'avatar
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
