@@ -130,8 +130,7 @@ public class Main2Activity extends AppCompatActivity
         }
         else if (id == R.id.nav_decouverte)
         {
-            //la liste de toutes les recettes disponibles
-            fragmentManager.beginTransaction().replace(R.id.content_main2, new RecettesCarousel()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_main2,new Decouvrir()).commit();
         }
         else if (id == R.id.nav_deconnexion)
         {

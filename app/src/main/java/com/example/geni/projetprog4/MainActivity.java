@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intentConnexion = new Intent(MainActivity.this, Main2Activity.class).putExtra("Identifiant", txtIdentifiant.getText().toString());
         pref = getSharedPreferences(NOM_PREF, MODE_PRIVATE);
-        pref.edit().putString("Identifiant",(txtIdentifiant.getText().toString()))
+        pref.edit().putString("Identifiant",(txtIdentifiant.getText().toString().toLowerCase()))
                 .putString("MotDePasse",(txtMotDePasse.getText().toString()))
                 .putBoolean("Memoriser",(checkSouvenir.isChecked())).commit();
         startActivity(intentConnexion);

@@ -92,4 +92,16 @@
         android:text="Supprimer mon compte"
         tools:layout_editor_absoluteX="17dp"
         tools:layout_editor_absoluteY="448dp" />
+
+    <Button
+        android:id="@+id/btnModifierCompte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSupprimerCompte"
+        android:layout_alignEnd="@+id/btnSupprimerCompte"
+        android:layout_alignLeft="@+id/btnSupprimerCompte"
+        android:layout_alignRight="@+id/btnSupprimerCompte"
+        android:layout_alignStart="@+id/btnSupprimerCompte"
+        android:layout_marginBottom="8dp"
+        android:text="Modifier mon compte" />
 </RelativeLayout>
