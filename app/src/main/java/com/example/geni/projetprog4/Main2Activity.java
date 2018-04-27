@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -42,6 +43,7 @@ public class Main2Activity extends AppCompatActivity
         View view = navigationView.getHeaderView(0);
         //Aller chercher le textview de la navigation
         txtUsername = (TextView) view.findViewById(R.id.txtUsernameHeader);
+
         //Récupérer l'intent
         Intent intent = getIntent();
         //Emmagasiner l'extra du username dans une variable *Peut être optimisé I guess*
@@ -131,6 +133,7 @@ public class Main2Activity extends AppCompatActivity
         else if (id == R.id.nav_decouverte)
         {
             fragmentManager.beginTransaction().replace(R.id.content_main2,new Decouvrir()).commit();
+
         }
         else if (id == R.id.nav_deconnexion)
         {
