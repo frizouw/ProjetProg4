@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class ListeEpicerieAdapter extends BaseAdapter {
 
+    //SOURCE: https://demonuts.com/listview-checkbox/
     Context context;
     String[] data;
     private static LayoutInflater inflater = null;
