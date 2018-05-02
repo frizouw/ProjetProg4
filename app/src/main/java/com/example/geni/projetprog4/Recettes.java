@@ -19,7 +19,6 @@ public class Recettes {
         this.photoRecette = photoRecette;
     }
 
-
     //Methode d'access
 
     //Methode toString

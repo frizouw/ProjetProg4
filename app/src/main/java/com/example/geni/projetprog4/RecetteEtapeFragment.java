@@ -14,6 +14,8 @@ public class RecetteEtapeFragment extends Fragment{
 
     }
 
+    @Nullable
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.recette_etape_fragment_layout, container, false);
         return view;
