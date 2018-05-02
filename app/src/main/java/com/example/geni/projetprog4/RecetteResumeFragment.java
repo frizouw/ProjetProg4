@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 public class RecetteResumeFragment extends Fragment {
 
-    //SOURCE : https://www.youtube.com/watch?v=7zaKUc2zfpI
+    //SOURCE : https://youtu.be/7zaKUc2zfpI?t=1136
     private View view;
     public RecetteResumeFragment()
     {

@@ -2,8 +2,12 @@ package com.example.geni.projetprog4;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences pref;
     private BD bd;
     private static final String NOM_PREF = "sharedPrefs";
+    private ThreadClient client;
+    private static int PORT_LOCAL = 3010;
+    private static int PORT_DISTANT = 3011;
+    private static String IPLocal;
+    //Adresse ip du serveur
+    private static String IP_DISTANT = "10.4.129.22";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +73,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Associer la variable avec ip address du device
+        IPLocal = ipDevice();
+        //connexion au serveur
+        client = new ThreadClient(PORT_LOCAL, IPLocal,PORT_DISTANT,IP_DISTANT);
+        client.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    //Methode privee qui prends le ip de l'appareil
+    //SOURCE: https://www.viralandroid.com/2016/01/how-to-get-ip-address-of-android-device-programmatically.html
+    private String ipDevice()
+    {
+        WifiManager wm = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+        Log.i("main","adresse IP: " + ip);
+        return ip;
     }
 
     //LA MÉTHODE POUR SE CONNECTER
