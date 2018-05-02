@@ -24,11 +24,11 @@ public class Favorite extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         //associer le layout a la classe
         v = inflater.inflate(R.layout.favorite, container, false);
-        recyclerView = (RecyclerView)v.findViewById(R.id.recyclerview_id);
+        recyclerView = (RecyclerView)v.findViewById(R.id.recyclerview_recette);
 
         //initialiser la liste
         list_recette = new ArrayList<>();
-        list_recette.add(new Recettes());
+        list_recette.add(new Recettes("1","padThai","3 minutes","5 minutes","0 minutes","http://thaibythaibc.ca/wp-content/uploads/2012/06/pad-thai.jpg"));
 
         RecetteAdapter adapter = new RecetteAdapter(getActivity(),list_recette);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));

@@ -15,17 +15,19 @@
         android:layout_height="match_parent">
         
         <ImageView
-            android:id="@+id/img_fav"
+            android:id="@+id/recette_img_id"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:background="#2d2d2d"/>
 
         <TextView
-            android:id="@+id/txt_nom_recette"
+            android:id="@+id/nom_recette_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="13sp"/>
+            android:textSize="13sp"
+            android:textColor="#2d2d2d"/>
 
     </LinearLayout>
     
