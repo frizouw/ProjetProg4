@@ -1,8 +1,10 @@
 package com.example.geni.projetprog4;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -18,14 +20,16 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
     private int portLocal, portDistant;
     private String ipLocal, ipDistant;
     private static TCPClient client;
+    private Context act;
 
 
     //Constructeur
-    public ThreadClient(int portLocal, String ipLocal, int portDistant, String ipDistant) {
+    public ThreadClient(int portLocal, String ipLocal, int portDistant, String ipDistant, Context act) {
         this.portLocal = portLocal;
         this.ipLocal = ipLocal;
         this.portDistant = portDistant;
         this.ipDistant = ipDistant;
+        this.act = act.getApplicationContext();
     }
 
     //methode d'access
@@ -90,6 +94,18 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
         switch(splits[0])
         {
             case "connect" :
+                if(splits[1].equals("true"))
+                {
+                    //si la connexion est approuvee, commencer la nouvelle activite
+                    //partir l'activite pour faire la demande
+                    Intent i = new Intent(act, Main2Activity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    act.startActivity(i);
+                }
+                else
+                {
+                    Toast.makeText(act, "Le compte n'existe pas", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

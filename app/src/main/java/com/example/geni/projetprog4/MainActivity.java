@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private static String IP_DISTANT = "10.4.129.22";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Cooking jar");
@@ -54,13 +55,9 @@ public class MainActivity extends AppCompatActivity {
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bd.validationCompte(txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString()))
-                    seConnecter();
-                else
-                    Toast.makeText(MainActivity.this, "Votre nom d'utilisateur ou votre mot de passe ne correspond pas", Toast.LENGTH_SHORT).show();
-
+                savePreferences();
+                new ThreadClient.ThreadEnvoi(String.format("connect:username=%s;password=%s", txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString())).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
-
         });
 
         //LE BOUTON POUR S'INSCRIRE
@@ -76,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         //Associer la variable avec ip address du device
         IPLocal = ipDevice();
         //connexion au serveur
-        client = new ThreadClient(PORT_LOCAL, IPLocal,PORT_DISTANT,IP_DISTANT);
+        client = new ThreadClient(PORT_LOCAL, IPLocal,PORT_DISTANT,IP_DISTANT, this);
         client.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
@@ -91,14 +88,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //LA MÉTHODE POUR SE CONNECTER
-    public void seConnecter()
+    public void savePreferences()
     {
-        Intent intentConnexion = new Intent(MainActivity.this, Main2Activity.class).putExtra("Identifiant", txtIdentifiant.getText().toString());
         pref = getSharedPreferences(NOM_PREF, MODE_PRIVATE);
         pref.edit().putString("Identifiant",(txtIdentifiant.getText().toString().toLowerCase()))
                 .putString("MotDePasse",(txtMotDePasse.getText().toString()))
                 .putBoolean("Memoriser",(checkSouvenir.isChecked())).commit();
-        startActivity(intentConnexion);
     }
 
     //LA MÉTHODE DU CHARGEMENT DE L'ACTIVITÉ POUR LE SHAREDPREFERENCE
