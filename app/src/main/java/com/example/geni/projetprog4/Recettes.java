@@ -9,6 +9,11 @@ public class Recettes {
     //Constructeur par defaut
     public Recettes(){}
 
+    public Recettes(String nomRecette, String photoRecette){
+        this.nomRecette=nomRecette;
+        this.photoRecette = photoRecette;
+    }
+
     //Constructeur par parametre
     public Recettes(String idRecette, String nomRecette, String dureePreparation, String dureeCuisson, String tempsAttente, String photoRecette) {
         IdRecette = idRecette;
@@ -20,6 +25,55 @@ public class Recettes {
     }
 
     //Methode d'access
+
+    public String getIdRecette() {
+        return IdRecette;
+    }
+
+    public void setIdRecette(String idRecette) {
+        IdRecette = idRecette;
+    }
+
+    public String getNomRecette() {
+        return nomRecette;
+    }
+
+    public void setNomRecette(String nomRecette) {
+        this.nomRecette = nomRecette;
+    }
+
+    public String getDureePreparation() {
+        return dureePreparation;
+    }
+
+    public void setDureePreparation(String dureePreparation) {
+        this.dureePreparation = dureePreparation;
+    }
+
+    public String getDureeCuisson() {
+        return dureeCuisson;
+    }
+
+    public void setDureeCuisson(String dureeCuisson) {
+        this.dureeCuisson = dureeCuisson;
+    }
+
+    public String getTempsAttente() {
+        return tempsAttente;
+    }
+
+    public void setTempsAttente(String tempsAttente) {
+        this.tempsAttente = tempsAttente;
+    }
+
+    public String getPhotoRecette() {
+        return photoRecette;
+    }
+
+    public void setPhotoRecette(String photoRecette) {
+        this.photoRecette = photoRecette;
+    }
+
 
     //Methode toString
 }
