@@ -1,6 +1,5 @@
 package com.example.geni.projetprog4;
 
-
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
