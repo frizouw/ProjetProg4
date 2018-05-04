@@ -18,7 +18,7 @@
         android:textColor="#ff871d"
         android:textColorLink="#ff871d"
         android:textSize="36sp"
-        app:fontFamily="@font/bubblegum_sans" />
+        />
 
     <TextView
         android:id="@+id/txtConsigneInscription"
