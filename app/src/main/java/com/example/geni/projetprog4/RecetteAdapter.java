@@ -1,6 +1,7 @@
 package com.example.geni.projetprog4;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -46,6 +47,9 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
         holder.cardView_recette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new  Intent(mContext, page_recette.class);
+                mContext.startActivity(i);
+
                 Log.i("RecetteAdapter","La recette a ete click");
             }
         });
