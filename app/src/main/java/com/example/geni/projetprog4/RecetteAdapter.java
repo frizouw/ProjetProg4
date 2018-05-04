@@ -47,7 +47,7 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
         holder.cardView_recette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new  Intent(mContext, page_recette.class);
+                Intent i = new  Intent(mContext, PageRecette.class);
                 mContext.startActivity(i);
 
                 Log.i("RecetteAdapter","La recette a ete click");

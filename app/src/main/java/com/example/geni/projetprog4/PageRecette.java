@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TableLayout;
 
-public class page_recette extends AppCompatActivity {
+public class PageRecette extends AppCompatActivity {
 
     TabLayout tab;
     AppBarLayout appBarLayout;
