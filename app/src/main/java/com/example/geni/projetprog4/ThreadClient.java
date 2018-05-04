@@ -107,6 +107,17 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
                     Toast.makeText(act, "Le compte n'existe pas", Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case "inscription" :
+                if(splits[1].equals("true"))
+                {
+                    Toast.makeText(act, "Inscription réussi!", Toast.LENGTH_SHORT).show();
+                    Intent intentRetourMenu = new Intent(act, MainActivity.class);
+                    act.startActivity(intentRetourMenu);
+                }
+                else if(splits[1].equals("false"))
+                {
+                    Toast.makeText(act, "Erreur : inscription!", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 

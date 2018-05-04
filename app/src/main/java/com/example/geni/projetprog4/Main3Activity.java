@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -40,6 +41,7 @@ public class Main3Activity extends AppCompatActivity {
     private Button btnInscrire;                 //Représente le bouton pour s'inscrire
     private BD bd;                              //Représente la base de données
     final int REQUEST_CODE_GALLERY = 999;       //Représente le code pour accèder à la gallerie
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,7 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Vérifie avant si l'utilisateur existe déja
-                if (bd.utilisateurExiste(idUtilisateur.getText().toString().toLowerCase()))
+                /*if (bd.utilisateurExiste(idUtilisateur.getText().toString().toLowerCase()))
                 {
                     Toast.makeText(Main3Activity.this, "Ce compte existe déja", Toast.LENGTH_SHORT).show();
                 }
@@ -105,7 +107,9 @@ public class Main3Activity extends AppCompatActivity {
                     startActivity(intentRetourMenu);
                 }
                 else
-                    Toast.makeText(Main3Activity.this, "Oops.. Une information est manquante!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main3Activity.this, "Oops.. Une information est manquante!", Toast.LENGTH_SHORT).show();*/
+
+                new ThreadClient.ThreadEnvoi(String.format("inscription::username=%s;password=%s;email=%s;pays=%s;urlImage=%s;points=%s", idUtilisateur.getText().toString().toLowerCase(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), uri != null ? uri.getPath() : null, 0)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
 
         });
@@ -141,7 +145,7 @@ public class Main3Activity extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null)
         {
-            Uri uri = data.getData();
+            uri = data.getData();
             try
             {
                 InputStream inputStream = getContentResolver().openInputStream(uri);

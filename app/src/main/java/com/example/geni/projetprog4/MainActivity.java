@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 savePreferences();
-                new ThreadClient.ThreadEnvoi(String.format("connect:username=%s;password=%s", txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString())).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                new ThreadClient.ThreadEnvoi(String.format("connect::username=%s;password=%s", txtIdentifiant.getText().toString(), txtMotDePasse.getText().toString())).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
         });
 
