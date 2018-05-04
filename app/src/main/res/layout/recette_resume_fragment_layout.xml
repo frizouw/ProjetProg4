@@ -7,7 +7,6 @@
 
     <TextView
         android:id="@+id/txtNomRecette"
-        style="@style/@font/bubblegum_sans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

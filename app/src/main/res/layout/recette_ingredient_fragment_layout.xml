@@ -6,7 +6,6 @@
 
     <TextView
         android:id="@+id/txtTitreIngredients"
-        style="@style/@font/bubblegum_sans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
