@@ -90,7 +90,7 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
     @Override
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
-        String[] splits = values[0].split(":");
+        String[] splits = values[0].split("::");
         switch(splits[0])
         {
             case "connect" :
@@ -100,6 +100,7 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
                     //partir l'activite pour faire la demande
                     Intent i = new Intent(act, Main2Activity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.putExtra("data", splits[2]);
                     act.startActivity(i);
                 }
                 else

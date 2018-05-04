@@ -3,11 +3,13 @@ package com.example.geni.projetprog4;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -109,7 +111,7 @@ public class Main3Activity extends AppCompatActivity {
                 else
                     Toast.makeText(Main3Activity.this, "Oops.. Une information est manquante!", Toast.LENGTH_SHORT).show();*/
 
-                new ThreadClient.ThreadEnvoi(String.format("inscription::username=%s;password=%s;email=%s;pays=%s;urlImage=%s;points=%s", idUtilisateur.getText().toString().toLowerCase(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), uri != null ? uri.getPath() : null, 0)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                new ThreadClient.ThreadEnvoi(String.format("inscription::username=%s;password=%s;email=%s;pays=%s;urlImage=%s;points=%s", idUtilisateur.getText().toString().toLowerCase(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), uri != null ? getPath(uri) : null, 0)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
 
         });
@@ -151,8 +153,8 @@ public class Main3Activity extends AppCompatActivity {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 avatar.setImageBitmap(bitmap);
-
-            } catch (FileNotFoundException e)
+            }
+            catch (FileNotFoundException e)
             {
                 e.printStackTrace();
             }
@@ -168,5 +170,14 @@ public class Main3Activity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] tableauBytes = stream.toByteArray();
         return tableauBytes;
+    }
+
+    public String getPath(Uri uri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor =getContentResolver().query(uri, projection, null,null,null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 }

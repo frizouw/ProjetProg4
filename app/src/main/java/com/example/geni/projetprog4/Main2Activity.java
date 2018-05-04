@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,10 +19,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,7 +36,8 @@ public class Main2Activity extends AppCompatActivity
 
     //PROPRIÉTÉS
     private NavigationView navigationView;
-    private TextView txtUsername;
+    private TextView txtUsername, txtEmail;
+    private ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +51,21 @@ public class Main2Activity extends AppCompatActivity
         View view = navigationView.getHeaderView(0);
         //Aller chercher le textview de la navigation
         txtUsername = (TextView) view.findViewById(R.id.txtUsernameHeader);
+        txtEmail = (TextView) view.findViewById(R.id.txtCourrielHeader);
+        avatar = (ImageView) view.findViewById(R.id.imgAvatarHeader);
 
         //Récupérer l'intent
         Intent intent = getIntent();
         //Emmagasiner l'extra du username dans une variable *Peut être optimisé I guess*
-        String username = (String) intent.getStringExtra("Identifiant");
-        //Implément le TextView
-        txtUsername.setText(username);
+        if(intent.getExtras().containsKey("data"))
+        {
+            String data = (String) intent.getStringExtra("data");
+            //Implément le TextView
+            txtUsername.setText(data.split(";")[0].split("=")[1]);
+            txtEmail.setText(data.split(";")[1].split("=")[1]);
+            Bitmap bitmap = BitmapFactory.decodeFile(data.split(";")[2].split("=")[1]);
+            avatar.setImageBitmap(bitmap);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
