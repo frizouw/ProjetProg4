@@ -11,7 +11,6 @@ import android.widget.TableLayout;
 public class PageRecette extends AppCompatActivity {
 
     TabLayout tab;
-    AppBarLayout appBarLayout;
     ViewPager viewPager;
 
     @Override
@@ -19,7 +18,6 @@ public class PageRecette extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recette);
         tab = (TabLayout) findViewById(R.id.tabLayout_id);
-        appBarLayout = (AppBarLayout)findViewById(R.id.appbarid);
         viewPager = (ViewPager)findViewById(R.id.viewpager_id);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
