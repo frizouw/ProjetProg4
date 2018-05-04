@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         chargement();
         bd = new BD(openOrCreateDatabase("CookingJarBD", MODE_PRIVATE, null));
 
+        //Associer la variable avec ip address du device
+        IPLocal = ipDevice();
+        //connexion au serveur
+        client = new ThreadClient(PORT_LOCAL, IPLocal,PORT_DISTANT,IP_DISTANT, this);
+        client.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
         //LE BOUTON POUR SE CONNECTER
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,12 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentInscription);
             }
         });
-
-        //Associer la variable avec ip address du device
-        IPLocal = ipDevice();
-        //connexion au serveur
-        client = new ThreadClient(PORT_LOCAL, IPLocal,PORT_DISTANT,IP_DISTANT, this);
-        client.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     //Methode privee qui prends le ip de l'appareil
