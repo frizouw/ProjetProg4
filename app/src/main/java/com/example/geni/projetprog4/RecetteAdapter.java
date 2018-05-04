@@ -43,6 +43,12 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
         holder.txt_nom_recette.setText(mData.get(position).getNomRecette());
         new DownloadImageTask(holder.recette_img_id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, mData.get(position).getPhotoRecette());
         Log.i("RecetteAdapter", " image de la recette" + mData.get(position).getPhotoRecette());
+        holder.cardView_recette.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("RecetteAdapter","La recette a ete click");
+            }
+        });
     }
 
     @Override
@@ -55,12 +61,14 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
 
         TextView txt_nom_recette;
         ImageView recette_img_id;
+        CardView cardView_recette;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             txt_nom_recette = (TextView) itemView.findViewById(R.id.nom_recette_id) ;
             recette_img_id = (ImageView) itemView.findViewById(R.id.recette_img_id);
+            cardView_recette = (CardView)itemView.findViewById(R.id.cardview_grid);
 
         }
     }
