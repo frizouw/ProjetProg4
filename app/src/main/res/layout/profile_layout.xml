@@ -25,7 +25,9 @@
         android:layout_marginTop="16dp"
         app:srcCompat="@mipmap/ic_launcher_round"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_marginLeft="-6dp"
+        android:layout_alignLeft="@+id/btnSupprimerCompte" />
 
     <TextView
         android:id="@+id/lblCourrielProfile"
@@ -36,7 +38,8 @@
         android:layout_marginTop="71dp"
         android:text="Courriel :"
         tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="63dp" />
+        tools:layout_editor_absoluteY="63dp"
+        android:layout_alignLeft="@+id/txtIdentifiantConnexion" />
 
     <ImageView
         android:id="@+id/imgPointage"
@@ -47,7 +50,8 @@
         android:layout_marginTop="125dp"
         app:srcCompat="@drawable/ic_currency"
         tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="108dp" />
+        tools:layout_editor_absoluteY="108dp"
+        android:layout_alignLeft="@+id/txtIdentifiantConnexion" />
 
     <TextView
         android:id="@+id/txtCourrielProfile"
@@ -58,7 +62,8 @@
         android:layout_marginTop="98dp"
         android:text="Patate3@gmail.ca"
         tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="82dp" />
+        tools:layout_editor_absoluteY="82dp"
+        android:layout_alignLeft="@+id/txtIdentifiantConnexion" />
 
     <TextView
         android:id="@+id/txtIdentifiantProfile"
@@ -69,7 +74,8 @@
         android:layout_marginTop="43dp"
         android:text="Patate3000"
         tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="35dp" />
+        tools:layout_editor_absoluteY="35dp"
+        android:layout_alignLeft="@+id/txtIdentifiantConnexion" />
 
     <TextView
         android:id="@+id/txtPointage"
@@ -80,7 +86,8 @@
         android:text="35264"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="116dp" />
+        tools:layout_editor_absoluteY="116dp"
+        android:layout_alignRight="@+id/txtCourrielProfile" />
 
     <Button
         android:id="@+id/btnSupprimerCompte"

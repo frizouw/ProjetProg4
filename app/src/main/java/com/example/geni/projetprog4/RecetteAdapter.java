@@ -42,7 +42,7 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull RecetteAdapter.MyViewHolder holder, int position) {
         holder.txt_nom_recette.setText(mData.get(position).getNomRecette());
-        new DownloadImageTask(holder.recette_img_id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, mData.get(position).getPhotoRecette());
+        new DownloadImage(holder.recette_img_id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, mData.get(position).getPhotoRecette());
         Log.i("RecetteAdapter", " image de la recette" + mData.get(position).getPhotoRecette());
         holder.cardView_recette.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,32 +74,6 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
             recette_img_id = (ImageView) itemView.findViewById(R.id.recette_img_id);
             cardView_recette = (CardView)itemView.findViewById(R.id.cardview_grid);
 
-        }
-    }
-
-    //Classe qui telecharge l'image du url de la DB
-    class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
         }
     }
 

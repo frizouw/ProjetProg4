@@ -6,8 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -25,6 +30,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -38,6 +44,7 @@ public class Main2Activity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView txtUsername, txtEmail;
     private ImageView avatar;
+    private int userPoints = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +70,19 @@ public class Main2Activity extends AppCompatActivity
             //Implément le TextView
             txtUsername.setText(data.split(";")[0].split("=")[1]);
             txtEmail.setText(data.split(";")[1].split("=")[1]);
-            Bitmap bitmap = BitmapFactory.decodeFile(data.split(";")[2].split("=")[1]);
-            avatar.setImageBitmap(bitmap);
+
+            String imageUrl = data.split(";")[2].split("=")[1];
+            if(imageUrl.startsWith("http"))
+            {
+                new DownloadImage(avatar).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, imageUrl);
+            }
+            else
+            {
+                Bitmap bitmap = BitmapFactory.decodeFile(data.split(";")[2].split("=")[1]);
+                avatar.setImageBitmap(bitmap);
+            }
+
+            userPoints = Integer.valueOf(data.split(";")[3].split("=")[1]);
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -81,6 +99,19 @@ public class Main2Activity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         // set le fragment de départ
         navigationView.setCheckedItem(R.id.nav_home);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_main2, new RecettesCarousel()).commit();
+    }
+
+    // https://stackoverflow.com/questions/44447056/convert-adaptiveicondrawable-to-bitmap-in-android-o-preview
+    @NonNull
+    private Bitmap getBitmapFromDrawable(@NonNull Drawable drawable) {
+        final Bitmap bmp = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        final Canvas canvas = new Canvas(bmp);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bmp;
     }
 
     @Override
@@ -128,7 +159,19 @@ public class Main2Activity extends AppCompatActivity
         }
         else if (id == R.id.nav_profile)
         {
-            fragmentManager.beginTransaction().replace(R.id.content_main2, new ProfileFragment()).commit();
+            ProfileFragment frag = new ProfileFragment();
+            Bundle data = new Bundle();
+            data.putString("username", txtUsername.getText().toString());
+            data.putString("email", txtEmail.getText().toString());
+            data.putInt("points", userPoints);
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            getBitmapFromDrawable(avatar.getDrawable()).compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+
+            data.putByteArray("avatar", byteArray);
+            frag.setArguments(data);
+            fragmentManager.beginTransaction().replace(R.id.content_main2, frag).commit();
         }
         else if (id == R.id.nav_mes_recettes)
         {
