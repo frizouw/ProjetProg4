@@ -57,10 +57,10 @@
         android:id="@+id/txtCourrielProfile"
         android:layout_width="188dp"
         android:layout_height="20dp"
-        android:layout_alignLeft="@+id/lblCourrielProfile"
-        android:layout_alignStart="@+id/lblCourrielProfile"
-        android:layout_below="@+id/lblCourrielProfile"
-        android:layout_marginTop="12dp"
+        android:layout_alignBaseline="@+id/lblCourrielProfile"
+        android:layout_alignBottom="@+id/lblCourrielProfile"
+        android:layout_toEndOf="@+id/txtIdentifiantConnexion"
+        android:layout_toRightOf="@+id/txtIdentifiantConnexion"
         android:text="Patate3@gmail.ca"
         tools:layout_editor_absoluteX="156dp"
         tools:layout_editor_absoluteY="82dp" />
@@ -71,8 +71,8 @@
         android:layout_height="20dp"
         android:layout_alignBaseline="@+id/txtIdentifiantConnexion"
         android:layout_alignBottom="@+id/txtIdentifiantConnexion"
-        android:layout_alignEnd="@+id/txtCourrielProfile"
-        android:layout_alignRight="@+id/txtCourrielProfile"
+        android:layout_toEndOf="@+id/txtIdentifiantConnexion"
+        android:layout_toRightOf="@+id/txtIdentifiantConnexion"
         android:text="Patate3000"
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="35dp" />
@@ -82,12 +82,12 @@
         android:layout_width="151dp"
         android:layout_height="23dp"
         android:layout_alignBottom="@+id/imgPointage"
-        android:layout_alignEnd="@+id/txtCourrielProfile"
+        android:layout_alignEnd="@+id/btnModifierCompte"
+        android:layout_alignRight="@+id/btnModifierCompte"
         android:text="35264"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="116dp"
-        android:layout_alignRight="@+id/txtCourrielProfile" />
+        tools:layout_editor_absoluteY="116dp" />
 
     <Button
         android:id="@+id/btnSupprimerCompte"
