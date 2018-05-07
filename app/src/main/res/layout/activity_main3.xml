@@ -90,7 +90,8 @@
         android:layout_alignRight="@+id/txtMotDePasseInscription"
         android:layout_alignStart="@+id/txtMotDePasseInscription"
         android:layout_below="@+id/txtMotDePasseInscription"
-        android:layout_marginTop="1dp" />
+        android:layout_marginTop="1dp"
+        android:background="@drawable/border_spinner" />
 
     <TextView
         android:id="@+id/lblPaysInscription"

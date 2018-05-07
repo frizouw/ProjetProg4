@@ -27,7 +27,7 @@
         android:layout_below="@+id/lblTitreDecouvrir"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="36dp"
         android:text="Type"
         android:textColor="@android:color/white" />
 
@@ -39,7 +39,8 @@
         android:layout_marginLeft="9dp"
         android:layout_marginStart="9dp"
         android:layout_toEndOf="@+id/lblType"
-        android:layout_toRightOf="@+id/lblType" />
+        android:layout_toRightOf="@+id/lblType"
+        android:background="@drawable/border_spinner" />
 
     <TextView
         android:id="@+id/lblPays"
@@ -69,7 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/spinnerType"
         android:layout_alignStart="@+id/spinnerType"
-        android:layout_alignTop="@+id/lblPays" />
+        android:layout_alignTop="@+id/lblPays"
+        android:background="@drawable/border_spinner" />
 
     <Spinner
         android:id="@+id/spinnerDifficulte"
@@ -79,7 +81,8 @@
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp"
         android:layout_toEndOf="@+id/lblDifficulte"
-        android:layout_toRightOf="@+id/lblDifficulte" />
+        android:layout_toRightOf="@+id/lblDifficulte"
+        android:background="@drawable/border_spinner" />
 
     <Button
         android:id="@+id/btnRechercher"

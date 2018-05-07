@@ -7,11 +7,16 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 
-public class ThreadClient extends AsyncTask<String,String,TCPClient> {
+public class ThreadClient extends AsyncTask<String,String,Void>
+{
     //le cote thread client
     //demande de la connexion au server
     //SOURCE: https://developer.android.com/reference/android/os/AsyncTask.html
@@ -19,12 +24,15 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
     //proprietes
     private int portLocal, portDistant;
     private String ipLocal, ipDistant;
-    private static TCPClient client;
     private Context act;
+    private BufferedReader in;
+    private static PrintWriter out;
+    private Socket socket;
 
 
     //Constructeur
-    public ThreadClient(int portLocal, String ipLocal, int portDistant, String ipDistant, Context act) {
+    public ThreadClient(int portLocal, String ipLocal, int portDistant, String ipDistant, Context act)
+    {
         this.portLocal = portLocal;
         this.ipLocal = ipLocal;
         this.portDistant = portDistant;
@@ -32,57 +40,42 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
         this.act = act.getApplicationContext();
     }
 
-    //methode d'access
-    public int getPortLocal() {
-        return portLocal;
-    }
-
-    public void setPortLocal(int portLocal) {
-        this.portLocal = portLocal;
-    }
-
-    public int getPortDistant() {
-        return portDistant;
-    }
-
-    public void setPortDistant(int portDistant) {
-        this.portDistant = portDistant;
-    }
-
-    public String getIpLocal() {
-        return ipLocal;
-    }
-
-    public void setIpLocal(String ipLocal) {
-        this.ipLocal = ipLocal;
-    }
-
-    public String getIpDistant() {
-        return ipDistant;
-    }
-
-    public void setIpDistant(String ipDistant) {
-        this.ipDistant = ipDistant;
-    }
-
-
-
     //thread dans le background pour la connexion
     @Override
-    protected TCPClient doInBackground(String... params) {
+    protected Void doInBackground(String... params)
+    {
         try
         {
-            client = new TCPClient(ipLocal, ipDistant, new TCPClient.MessageCallback() {
-                @Override
-                public void callbackMessageReceiver(String message) {
-                    publishProgress(message);
+            socket = new Socket();
+            //reutilise le port
+            socket.setSoLinger(true, 0);
+            //utiliser le port
+            socket.setReuseAddress(true);
+            //lier le socket
+            socket.bind(new InetSocketAddress(this.ipLocal,3010));
+            //la connexion au serveur
+            socket.connect(new InetSocketAddress(this.ipDistant, 3011));
+            Log.i("main", "Vous êtes connectés au serveur.");
+
+            // Create PrintWriter object for sending messages to server.
+            out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+
+            //Create BufferedReader object for receiving messages from server.
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+            String msg;
+            while (true)
+            {
+                msg = in.readLine();
+                if (msg != null)
+                {
+                    publishProgress(msg);
                 }
-            });
-            client.run();
+            }
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            e.printStackTrace();
+            ex.printStackTrace();
         }
         return null;
     }
@@ -117,7 +110,7 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
                 }
                 else if(splits[1].equals("false"))
                 {
-                    Toast.makeText(act, "Erreur : inscription!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(act, "Le compte existe déjà", Toast.LENGTH_SHORT).show();
                 }
         }
     }
@@ -145,7 +138,11 @@ public class ThreadClient extends AsyncTask<String,String,TCPClient> {
         {
             try
             {
-                client.sendMessage(data);
+                if (out != null)
+                {
+                    out.println(data);
+                    out.flush();
+                }
             }
             catch (Exception e)
             {

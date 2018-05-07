@@ -26,14 +26,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtIdentifiant, txtMotDePasse;
     private CheckBox checkSouvenir;
     private SharedPreferences pref;
-    private BD bd;
     private static final String NOM_PREF = "sharedPrefs";
     private ThreadClient client;
     private static int PORT_LOCAL = 3010;
     private static int PORT_DISTANT = 3011;
     private static String IPLocal;
     //Adresse ip du serveur
-    private static String IP_DISTANT = "10.4.129.5";
+    private static String IP_DISTANT = "10.4.129.22";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         txtMotDePasse = (EditText) findViewById(R.id.txtMotDePasseConnexion);
         checkSouvenir = (CheckBox) findViewById(R.id.checkBoxMemoriser);
         chargement();
-        bd = new BD(openOrCreateDatabase("CookingJarBD", MODE_PRIVATE, null));
 
         //Associer la variable avec ip address du device
         IPLocal = ipDevice();

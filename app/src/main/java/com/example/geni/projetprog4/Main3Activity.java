@@ -41,7 +41,6 @@ public class Main3Activity extends AppCompatActivity {
     private Spinner pays;                       //Représente le spinner pour la selection du pays
     private Button btnChoisirImage;             //Représente le bouton qui aide l'utilisateur à choisir l'image
     private Button btnInscrire;                 //Représente le bouton pour s'inscrire
-    private BD bd;                              //Représente la base de données
     final int REQUEST_CODE_GALLERY = 999;       //Représente le code pour accèder à la gallerie
     private Uri uri;
 
@@ -62,11 +61,6 @@ public class Main3Activity extends AppCompatActivity {
         pays = (Spinner)findViewById(R.id.spinnerPaysInscription);
         motPasse = (EditText)findViewById(R.id.txtMotDePasseInscription);
         courriel = (EditText) findViewById(R.id.txtCourrielInscription);
-
-        //Création de la BD
-        bd = new BD(openOrCreateDatabase("CookingJarBD", MODE_PRIVATE, null));
-        //Création des tables
-        bd.createTable();
 
         //Remplir le spinner de pays
         List<String> spinnerPays = new ArrayList<String>();
