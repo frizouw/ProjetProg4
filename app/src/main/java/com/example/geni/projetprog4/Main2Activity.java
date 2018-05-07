@@ -179,7 +179,7 @@ public class Main2Activity extends AppCompatActivity
         }
         else if (id == R.id.nav_amies)
         {
-
+            fragmentManager.beginTransaction().replace(R.id.content_main2, new ListeAmies()).commit();
         }
         else if (id == R.id.nav_calendrier)
         {

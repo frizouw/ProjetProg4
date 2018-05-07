@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private static int PORT_DISTANT = 3011;
     private static String IPLocal;
     //Adresse ip du serveur
-    private static String IP_DISTANT = "192.168.0.161";
+    private static String IP_DISTANT = "10.4.129.5";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
