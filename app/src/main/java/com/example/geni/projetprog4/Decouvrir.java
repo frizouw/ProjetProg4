@@ -60,8 +60,14 @@ public class Decouvrir extends Fragment {
 
         btnRecherche.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                int position = 0;
 
+                if (Utils.LIST_RECETTES.get(position).getType() == spinnerRecette.getSelectedItem().toString() && Utils.LIST_RECETTES.get(position).getPays() == spinnerPays.getSelectedItem().toString() && Utils.LIST_RECETTES.get(position).getNiveau() == Integer.parseInt(spinnerDifficulter.getSelectedItem().toString()))
+                {
+
+                }
 
             }
         });
