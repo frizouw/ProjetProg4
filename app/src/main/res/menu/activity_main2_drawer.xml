@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_amies"
             android:icon="@drawable/ic_amies"
-            android:title="Amies" />
+            android:title="Ami(e)s" />
         <item
             android:id="@+id/nav_calendrier"
             android:icon="@drawable/ic_calendar"
