@@ -6,13 +6,24 @@
     android:background="@drawable/gradient"
     android:orientation="vertical">
 
-    <in.goodiebag.carouselpicker.CarouselPicker
+    <!--in.goodiebag.carouselpicker.CarouselPicker
         android:id="@+id/carousel1"
         android:layout_width="match_parent"
         android:layout_height="123dp"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:background="#DDD" />
+        android:background="#DDD" /-->
+
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:fillColor="#FFFFFFFF"
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:slideInterval="3000"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="1dp"/>
 
     <TextView
         android:id="@+id/txtTitreAcceuil"
