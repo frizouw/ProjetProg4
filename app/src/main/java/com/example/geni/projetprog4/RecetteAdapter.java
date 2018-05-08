@@ -41,9 +41,9 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecetteAdapter.MyViewHolder holder, int position) {
-        holder.txt_nom_recette.setText(mData.get(position).getNomRecette());
-        new DownloadImage(holder.recette_img_id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, mData.get(position).getPhotoRecette());
-        Log.i("RecetteAdapter", " image de la recette" + mData.get(position).getPhotoRecette());
+        holder.txt_nom_recette.setText(mData.get(position).getNom());
+        new DownloadImage(holder.recette_img_id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, mData.get(position).getUrlImage());
+        //Log.i("RecetteAdapter", " image de la recette" + mData.get(position).getUrlImage());
         holder.cardView_recette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

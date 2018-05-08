@@ -29,9 +29,8 @@ public class Favorite extends Fragment {
 
         //initialiser la liste
         list_recette = new ArrayList<>();
-        list_recette.add(new Recettes("1","padThai","3 minutes","5 minutes","0 minutes","http://thaibythaibc.ca/wp-content/uploads/2012/06/pad-thai.jpg"));
 
-        RecetteAdapter adapter = new RecetteAdapter(getActivity(),list_recette);
+        RecetteAdapter adapter = new RecetteAdapter(getActivity(),Utils.LIST_RECETTES);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
         recyclerView.setAdapter(adapter);
 

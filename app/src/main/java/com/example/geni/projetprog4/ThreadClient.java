@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -13,6 +16,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 
 
 public class ThreadClient extends AsyncTask<String,String,Void>
@@ -89,6 +93,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
             case "connect" :
                 if(splits[1].equals("true"))
                 {
+                    new ThreadEnvoi("allRecettes").executeOnExecutor(THREAD_POOL_EXECUTOR);
                     //si la connexion est approuvee, commencer la nouvelle activite
                     //partir l'activite pour faire la demande
                     Intent i = new Intent(act, Main2Activity.class);
@@ -112,6 +117,10 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 {
                     Toast.makeText(act, "Le compte existe déjà", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case "allRecettes":
+                Utils.LIST_RECETTES = new GsonBuilder().create().fromJson(splits[1], new TypeToken<ArrayList<Recettes>>(){}.getType());
+                break;
         }
     }
 

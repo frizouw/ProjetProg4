@@ -1,79 +1,147 @@
 package com.example.geni.projetprog4;
 
-public class Recettes {
-    //la classe pour les recettes
+public class Recettes
+{
+    private String nom, pays, dureePrep, dureeCuisson, tempsAttente, ingredients, type, preparation, date, urlImage;
+    private int niveau, calories;
 
-    //Proprietes
-    private String IdRecette, nomRecette, dureePreparation, dureeCuisson, tempsAttente, photoRecette;
+    public Recettes()
+    {
 
-    //Constructeur par defaut
-    public Recettes(){}
-
-    public Recettes(String nomRecette, String photoRecette){
-        this.nomRecette=nomRecette;
-        this.photoRecette = photoRecette;
     }
 
-    //Constructeur par parametre
-    public Recettes(String idRecette, String nomRecette, String dureePreparation, String dureeCuisson, String tempsAttente, String photoRecette) {
-        IdRecette = idRecette;
-        this.nomRecette = nomRecette;
-        this.dureePreparation = dureePreparation;
+    public Recettes(String nom, String pays, String dureePrep, String dureeCuisson, String tempsAttente, String ingredients, String type, String preparation, String date, String urlImage, int niveau, int calories)
+    {
+        this.nom = nom;
+        this.pays = pays;
+        this.dureePrep = dureePrep;
         this.dureeCuisson = dureeCuisson;
         this.tempsAttente = tempsAttente;
-        this.photoRecette = photoRecette;
+        this.ingredients = ingredients;
+        this.type = type;
+        this.preparation = preparation;
+        this.date = date;
+        this.urlImage = urlImage;
+        this.niveau = niveau;
+        this.calories = calories;
     }
 
-    //Methode d'access
-
-    public String getIdRecette() {
-        return IdRecette;
+    public String getNom()
+    {
+        return nom;
     }
 
-    public void setIdRecette(String idRecette) {
-        IdRecette = idRecette;
+    public void setNom(String nom)
+    {
+        this.nom = nom;
     }
 
-    public String getNomRecette() {
-        return nomRecette;
+    public String getPays()
+    {
+        return pays;
     }
 
-    public void setNomRecette(String nomRecette) {
-        this.nomRecette = nomRecette;
+    public void setPays(String pays)
+    {
+        this.pays = pays;
     }
 
-    public String getDureePreparation() {
-        return dureePreparation;
+    public String getDureePrep()
+    {
+        return dureePrep;
     }
 
-    public void setDureePreparation(String dureePreparation) {
-        this.dureePreparation = dureePreparation;
+    public void setDureePrep(String dureePrep)
+    {
+        this.dureePrep = dureePrep;
     }
 
-    public String getDureeCuisson() {
+    public String getDureeCuisson()
+    {
         return dureeCuisson;
     }
 
-    public void setDureeCuisson(String dureeCuisson) {
+    public void setDureeCuisson(String dureeCuisson)
+    {
         this.dureeCuisson = dureeCuisson;
     }
 
-    public String getTempsAttente() {
+    public String getTempsAttente()
+    {
         return tempsAttente;
     }
 
-    public void setTempsAttente(String tempsAttente) {
+    public void setTempsAttente(String tempsAttente)
+    {
         this.tempsAttente = tempsAttente;
     }
 
-    public String getPhotoRecette() {
-        return photoRecette;
+    public String getIngredients() {
+        return ingredients;
     }
 
-    public void setPhotoRecette(String photoRecette) {
-        this.photoRecette = photoRecette;
+    public void setIngredients(String ingredients)
+    {
+        this.ingredients = ingredients;
     }
 
+    public String getType()
+    {
+        return type;
+    }
 
-    //Methode toString
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+
+    public String getPreparation()
+    {
+        return preparation;
+    }
+
+    public void setPreparation(String preparation)
+    {
+        this.preparation = preparation;
+    }
+
+    public String getDate()
+    {
+        return date;
+    }
+
+    public void setDate(String date)
+    {
+        this.date = date;
+    }
+
+    public String getUrlImage()
+    {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage)
+    {
+        this.urlImage = urlImage;
+    }
+
+    public int getNiveau()
+    {
+        return niveau;
+    }
+
+    public void setNiveau(int niveau)
+    {
+        this.niveau = niveau;
+    }
+
+    public int getCalories()
+    {
+        return calories;
+    }
+
+    public void setCalories(int calories)
+    {
+        this.calories = calories;
+    }
 }

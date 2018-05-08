@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Layout pour mes recettes qui contient les favorites-->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    >
+    android:background="@drawable/gradient"
+    android:padding="8dp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_recette"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 </LinearLayout>
