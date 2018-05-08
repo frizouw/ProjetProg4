@@ -3,6 +3,8 @@ package com.example.geni.projetprog4;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
+import java.io.Serializable;
+
 public class Recettes
 {
     private String nom, pays, dureePrep, dureeCuisson, tempsAttente, ingredients, type, preparation, date, urlImage;

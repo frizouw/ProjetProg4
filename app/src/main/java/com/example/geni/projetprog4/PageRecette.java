@@ -14,6 +14,7 @@ public class PageRecette extends AppCompatActivity {
 
     TabLayout tab;
     ViewPager viewPager;
+    Recettes recette;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +27,25 @@ public class PageRecette extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        int recette = 0;
+        if(getIntent().getExtras().containsKey("recette"))
+            recette = getIntent().getExtras().getInt("recette");
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new RecetteResumeFragment(), "Resume");
-        adapter.AddFragment(new RecetteIngredientFragment(), "Ingredients");
-        adapter.AddFragment(new RecetteEtapeFragment(), "Étapes");
+        Bundle b = new Bundle();
+        b.putInt("recette", recette);
+
+        RecetteResumeFragment resume = new RecetteResumeFragment();
+        resume.setArguments(b);
+        RecetteIngredientFragment ingredient = new RecetteIngredientFragment();
+        ingredient.setArguments(b);
+        RecetteEtapeFragment etape = new RecetteEtapeFragment();
+        etape.setArguments(b);
+
+        adapter.AddFragment(resume, "Resume");
+        adapter.AddFragment(ingredient, "Ingredients");
+        adapter.AddFragment(etape, "Étapes");
+
 
         viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
