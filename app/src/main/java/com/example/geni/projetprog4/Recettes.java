@@ -1,9 +1,13 @@
 package com.example.geni.projetprog4;
 
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+
 public class Recettes
 {
     private String nom, pays, dureePrep, dureeCuisson, tempsAttente, ingredients, type, preparation, date, urlImage;
     private int niveau, calories;
+    private Bitmap image;
 
     public Recettes()
     {
@@ -24,6 +28,15 @@ public class Recettes
         this.urlImage = urlImage;
         this.niveau = niveau;
         this.calories = calories;
+        new DownloadImage.DownloadImageBitmap(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, urlImage);
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
     public String getNom()
@@ -115,16 +128,6 @@ public class Recettes
         this.date = date;
     }
 
-    public String getUrlImage()
-    {
-        return urlImage;
-    }
-
-    public void setUrlImage(String urlImage)
-    {
-        this.urlImage = urlImage;
-    }
-
     public int getNiveau()
     {
         return niveau;
@@ -143,5 +146,14 @@ public class Recettes
     public void setCalories(int calories)
     {
         this.calories = calories;
+    }
+
+    public Bitmap getImage()
+    {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }

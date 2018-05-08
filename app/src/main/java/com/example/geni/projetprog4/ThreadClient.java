@@ -14,6 +14,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -119,7 +120,13 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 }
                 break;
             case "allRecettes":
-                Utils.LIST_RECETTES = new GsonBuilder().create().fromJson(splits[1], new TypeToken<ArrayList<Recettes>>(){}.getType());
+                ArrayList<Recettes> server = new GsonBuilder().create().fromJson(splits[1], new TypeToken<ArrayList<Recettes>>(){}.getType());
+                ArrayList<Recettes> temps = new ArrayList<>();
+
+                for(Recettes r : server)
+                    temps.add(new Recettes(r.getNom(), r.getPays(), r.getDureePrep(), r.getDureeCuisson(), r.getTempsAttente(), r.getIngredients(), r.getType(), r.getPreparation(), r.getDate(), r.getUrlImage(), r.getNiveau(), r.getCalories()));
+
+                Utils.LIST_RECETTES = temps;
                 break;
         }
     }

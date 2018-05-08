@@ -40,4 +40,36 @@ public class DownloadImage extends AsyncTask<String, Void, Bitmap>
     {
         bmImage.setImageBitmap(result);
     }
+
+    public static class DownloadImageBitmap extends AsyncTask<String, Void, Bitmap>
+    {
+        private Recettes recette;
+        public DownloadImageBitmap(Recettes recette)
+        {
+            this.recette = recette;
+        }
+
+        protected Bitmap doInBackground(String... urls)
+        {
+            String urldisplay = urls[0];
+            Bitmap bitmap = null;
+            try
+            {
+                InputStream in = new URL(urldisplay).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+            }
+            catch (Exception e)
+            {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap)
+        {
+            recette.setImage(bitmap);
+        }
+    }
 }
