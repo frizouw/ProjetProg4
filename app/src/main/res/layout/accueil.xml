@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:orientation="vertical">
+
+    <in.goodiebag.carouselpicker.CarouselPicker
+        android:id="@+id/carousel1"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#DDD" />
+
+    <TextView
+        android:id="@+id/txtTitreAcceuil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Bienvenue!"
+        android:textColor="#ff871d"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/txtDescriptionApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Les développeurs de l'application android Cooking jar vous souhaite la bienvenue et désirs vous expliquez le fonctionnement de l'application dès votre première utilisation. Cette application a pour but d'améliorer vos compétences de cuisine, tout en améliorant vos connaissances sur divers mets culturels. De plus, ils vous est possible de compétitionner contre vos ami(e)s et de leurs montrer en quoi vous êtes capable."
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+</LinearLayout>

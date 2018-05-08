@@ -20,10 +20,8 @@ public class RecettesCarousel extends Fragment
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.recettes_menu, container, false);
+        v = inflater.inflate(R.layout.accueil, container, false);
         carouselPicker1 = (CarouselPicker)v.findViewById(R.id.carousel1);
-        carouselPicker2 = (CarouselPicker)v.findViewById(R.id.carousel2);
-        carouselPicker3 = (CarouselPicker)v.findViewById(R.id.carousel3);
 
         //SOURCE: https://github.com/GoodieBag/CarouselPicker
         //Carousel 1 with images
@@ -35,23 +33,6 @@ public class RecettesCarousel extends Fragment
         CarouselPicker.CarouselViewAdapter imageAdapter = new CarouselPicker.CarouselViewAdapter(getActivity(),itemsImages1,0);
         carouselPicker1.setAdapter(imageAdapter);
 
-        //Carousel 2 with text
-        List<CarouselPicker.PickerItem>itemsText = new ArrayList<>();
-        //ajouter le text dans la liste
-        itemsText.add(new CarouselPicker.TextItem("One",20));
-        itemsText.add(new CarouselPicker.TextItem("Two",20));
-        itemsText.add(new CarouselPicker.TextItem("Three",20));
-        CarouselPicker.CarouselViewAdapter textAdapter = new CarouselPicker.CarouselViewAdapter(getActivity(),itemsText,0);
-        carouselPicker2.setAdapter(textAdapter);
-
-        //Carousel 3 with mix
-        List<CarouselPicker.PickerItem>mixItems = new ArrayList<>();
-        //ajouter les dans la liste
-        mixItems.add(new CarouselPicker.TextItem("One",20));
-        mixItems.add(new CarouselPicker.DrawableItem(R.mipmap.ic_launcher));
-        mixItems.add(new CarouselPicker.TextItem("Three",20));
-        CarouselPicker.CarouselViewAdapter mixAdapter = new CarouselPicker.CarouselViewAdapter(getActivity(),mixItems,0);
-        carouselPicker3.setAdapter(mixAdapter);
         return v;
     }
 
