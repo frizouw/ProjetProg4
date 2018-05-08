@@ -3,19 +3,16 @@ package com.example.geni.projetprog4;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class Decouvrir extends Fragment {
 
@@ -58,16 +55,27 @@ public class Decouvrir extends Fragment {
         adapterDifficulter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerDifficulter.setAdapter(adapterDifficulter);
 
+
         btnRecherche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                int position = 0;
+                ArrayList<String> recetteRechercher = new ArrayList<>();
 
-                if (Utils.LIST_RECETTES.get(position).getType() == spinnerRecette.getSelectedItem().toString() && Utils.LIST_RECETTES.get(position).getPays() == spinnerPays.getSelectedItem().toString() && Utils.LIST_RECETTES.get(position).getNiveau() == Integer.parseInt(spinnerDifficulter.getSelectedItem().toString()))
+                Log.v("SHIT","coucou");
+
+                for (int position = 0; position  < Utils.LIST_RECETTES.size(); position++)
                 {
+                    if (Utils.LIST_RECETTES.get(position).getType() == spinnerRecette.getSelectedItem().toString() && Utils.LIST_RECETTES.get(position).getPays() == spinnerPays.getSelectedItem().toString() && Utils.LIST_RECETTES.get(position).getNiveau() == Integer.parseInt(spinnerDifficulter.getSelectedItem().toString()))
+                    {
+                        recetteRechercher.add(Utils.LIST_RECETTES.get(position).getNom());
 
+                        Log.v("SHIT",Utils.LIST_RECETTES.get(position).getNom());
+                    }
                 }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.liste_custom, recetteRechercher);
+                listResultat.setAdapter(adapter);
 
             }
         });
