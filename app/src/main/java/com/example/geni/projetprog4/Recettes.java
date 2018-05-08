@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import java.io.Serializable;
 
-public class Recettes implements Serializable
+public class Recettes
 {
     private String nom, pays, dureePrep, dureeCuisson, tempsAttente, ingredients, type, preparation, date, urlImage;
     private int niveau, calories;

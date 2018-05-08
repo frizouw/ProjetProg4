@@ -47,7 +47,8 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 Intent i = new  Intent(mContext, PageRecette.class);
-                i.putExtra("recette", Utils.LIST_RECETTES.get(position));
+                i.putExtra("recette", position);
+                Log.i("pos", String.valueOf(position));
                 mContext.startActivity(i);
 
                 Log.i("RecetteAdapter","La recette a ete click");

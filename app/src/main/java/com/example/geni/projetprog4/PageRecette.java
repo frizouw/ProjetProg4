@@ -27,12 +27,13 @@ public class PageRecette extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        int recette = 0;
         if(getIntent().getExtras().containsKey("recette"))
-            recette = (Recettes) getIntent().getExtras().get("recette");
+            recette = getIntent().getExtras().getInt("recette");
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         Bundle b = new Bundle();
-        b.putSerializable("recette", recette);
+        b.putInt("recette", recette);
 
         RecetteResumeFragment resume = new RecetteResumeFragment();
         resume.setArguments(b);
