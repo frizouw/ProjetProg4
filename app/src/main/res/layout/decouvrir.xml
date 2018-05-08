@@ -67,8 +67,10 @@
         android:id="@+id/spinnerPays"
         android:layout_width="263dp"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinnerType"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/spinnerType"
         android:layout_marginTop="159dp"
         android:background="@drawable/border_spinner" />
 
@@ -76,8 +78,10 @@
         android:id="@+id/spinnerDifficulte"
         android:layout_width="261dp"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinnerPays"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/spinnerPays"
         android:layout_marginTop="209dp"
         android:background="@drawable/border_spinner" />
 
@@ -85,9 +89,9 @@
         android:id="@+id/btnRechercher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/spinnerDifficulte"
-        android:layout_marginStart="66dp"
+        android:layout_toEndOf="@+id/lblPays"
+        android:layout_toRightOf="@+id/lblPays"
         android:text="Rechercher" />
 
     <Button

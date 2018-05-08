@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,7 @@ public class Decouvrir extends Fragment {
     private Spinner spinnerRecette;
     private Spinner spinnerPays;
     private Spinner spinnerDifficulter;
-
+    private ListView listResultat;
     private Button btnRecherche;
     private Button btnAleatoire;
 
@@ -35,6 +38,7 @@ public class Decouvrir extends Fragment {
         spinnerDifficulter = (Spinner) vue.findViewById(R.id.spinnerDifficulte);
         btnRecherche = (Button) vue.findViewById(R.id.btnRechercher);
         btnAleatoire = (Button) vue.findViewById(R.id.btnAleatoire);
+        listResultat = (ListView) vue.findViewById(R.id.listRecette);
 
         //Remplir  le spinner de type de recette
         String[] typeRecette = {"Déjeuner", "Dîner", "Souper", "Dessert", "Entrée"};
