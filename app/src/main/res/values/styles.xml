@@ -17,4 +17,17 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!--CALENDRIER CUSTOM : https://stackoverflow.com/questions/37301231/android-calendar-view-change-text-color-->
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">#ff871d</item>
+        <item name="colorPrimary">#FFFFFF</item>
+    </style>
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:weekNumberColor">#ff871d</item>
+    </style>
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>
