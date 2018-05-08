@@ -3,7 +3,9 @@ package com.example.geni.projetprog4;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
-public class Recettes
+import java.io.Serializable;
+
+public class Recettes implements Serializable
 {
     private String nom, pays, dureePrep, dureeCuisson, tempsAttente, ingredients, type, preparation, date, urlImage;
     private int niveau, calories;

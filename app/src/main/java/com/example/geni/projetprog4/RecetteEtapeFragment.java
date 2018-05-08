@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 public class RecetteEtapeFragment extends Fragment {
 
     View view;
-    public RecetteEtapeFragment() {
-
+    private Recettes recette;
+    public RecetteEtapeFragment()
+    {
+        if(getArguments() != null && getArguments().containsKey("recette"))
+            recette = (Recettes) getArguments().get("recette");
     }
 
     @Nullable
