@@ -17,13 +17,13 @@
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="250dp"
         app:fillColor="#FFFFFFFF"
         app:pageColor="#00000000"
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
-        app:strokeWidth="1dp"/>
+        app:strokeWidth="1dp" />
 
     <TextView
         android:id="@+id/txtTitreAcceuil"
@@ -38,8 +38,9 @@
         android:id="@+id/txtDescriptionApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Les développeurs de l'application android Cooking jar vous souhaite la bienvenue et désirs vous expliquez le fonctionnement de l'application dès votre première utilisation. Cette application a pour but d'améliorer vos compétences de cuisine, tout en améliorant vos connaissances sur divers mets culturels. De plus, ils vous est possible de compétitionner contre vos ami(e)s et de leurs montrer en quoi vous êtes capable."
         android:textColor="@android:color/white"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
 </LinearLayout>

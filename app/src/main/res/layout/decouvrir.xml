@@ -98,12 +98,11 @@
         android:id="@+id/btnAleatoire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnRechercher"
-        android:layout_alignBottom="@+id/btnRechercher"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_toEndOf="@+id/btnRechercher"
-        android:layout_toRightOf="@+id/btnRechercher"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spinnerDifficulte"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:text="Recette aléatoire" />
 
     <ListView
