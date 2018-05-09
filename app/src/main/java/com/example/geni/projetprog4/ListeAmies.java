@@ -3,6 +3,7 @@ package com.example.geni.projetprog4;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,15 +18,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class ListeAmies extends Fragment {
-
+public class ListeAmies extends Fragment
+{
     //PROPRIÉTÉS
     private View v;
     private FloatingActionButton btnAjouterAmis;
     private EditText entrer;
     private ListView listeAmies;
     private ArrayAdapter<String> adapter;
-    ArrayList<String> amis = new ArrayList<>();
+    private Main2Activity parent;
 
     @Nullable
     @Override
@@ -55,22 +56,7 @@ public class ListeAmies extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which)
                         {
-                            amis.add(String.format("%s        Points: %s", entrer.getText(), 110));
-                            adapter = new ArrayAdapter<String>(getActivity(), R.layout.liste_custom, amis);
-                            listeAmies.setAdapter(adapter);
-
-                            //QUAND ON APPUIS SUR AJOUTER
-                            /*for (Users user : Utils.LIST_USERS)
-                            {
-                                if (user.getUsername().toLowerCase().equals(entrer.toString().toLowerCase()))
-                                {
-                                    Utils.AMIS.add(user);
-                                    adapter = new ArrayAdapter<>(getActivity(), R.layout.liste_custom, Utils.AMIS);
-                                    listeAmies.setAdapter(adapter);
-                                }
-                                else
-                                    Toast.makeText(getActivity(), "Ce compte n'existe pas", Toast.LENGTH_LONG);
-                            }*/
+                            new ThreadClient.ThreadEnvoi(String.format("addAmies::userID=%s;friendID=%s",Utils.CURRENT_USER.getUsername(),entrer.getText())).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
                         }
                     })
@@ -88,6 +74,14 @@ public class ListeAmies extends Fragment {
                 alertDialog.show();
             }
         });
+
+        ArrayList<String> amis = new ArrayList<>();
+
+        for(Users user : Utils.AMIS)
+            amis.add(String.format("%s | %s points", user.getUsername(), user.getPoints()));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.liste_custom, amis);
+        listeAmies.setAdapter(adapter);
 
         return  v;
     }

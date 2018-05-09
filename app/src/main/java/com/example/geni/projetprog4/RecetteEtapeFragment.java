@@ -72,7 +72,7 @@ public class RecetteEtapeFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         //Variables qui prennent les donnees
-                        String username = MainActivity.username;
+                        String username = Utils.CURRENT_USER.getUsername();
                         String nomRecette = recette.getNom();
                         String dateChoisie = selectedDate;
                         //thread qui envoie les donnees au serveur et qui les insert dans la BD

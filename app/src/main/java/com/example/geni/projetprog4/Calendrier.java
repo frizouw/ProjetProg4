@@ -49,8 +49,7 @@ public class Calendrier extends Fragment{
             Notification();
 
             //envoie une demande pour prendre les recettes selon le username et la date selectionnee
-            String username = MainActivity.username;
-            new ThreadClient.ThreadEnvoi(String.format("askCalendrier::username=%s;dateChoisie=%s",username,dateChoisie)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            new ThreadClient.ThreadEnvoi(String.format("askCalendrier::username=%s;dateChoisie=%s",Utils.CURRENT_USER.getUsername(),dateChoisie)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
             //recevoir les recettes selon la date selectionnee
             //la cle du Intent

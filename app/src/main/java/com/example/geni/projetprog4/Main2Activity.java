@@ -35,6 +35,7 @@ import org.w3c.dom.Text;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,7 +47,6 @@ public class Main2Activity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView txtUsername, txtEmail;
     private ImageView avatar;
-    private int userPoints = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,23 +68,17 @@ public class Main2Activity extends AppCompatActivity
         //Emmagasiner l'extra du username dans une variable *Peut être optimisé I guess*
         if(intent.getExtras().containsKey("data"))
         {
-            String data = (String) intent.getStringExtra("data");
+            String data = intent.getStringExtra("data");
+            String username = data.split(";")[0].split("=")[1];
+            String pays = data.split(";")[1].split("=")[1];
+            String email = data.split(";")[2].split("=")[1];
+            String urlImage = data.split(";")[3].split("=")[1];
+            int points = Integer.valueOf(data.split(";")[4].split("=")[1]);
             //Implément le TextView
-            txtUsername.setText(data.split(";")[0].split("=")[1]);
-            txtEmail.setText(data.split(";")[1].split("=")[1]);
+            txtUsername.setText(username);
+            txtEmail.setText(email);
 
-            String imageUrl = data.split(";")[2].split("=")[1];
-            if(imageUrl.startsWith("http"))
-            {
-                new DownloadImage(avatar).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, imageUrl);
-            }
-            else
-            {
-                Bitmap bitmap = BitmapFactory.decodeFile(data.split(";")[2].split("=")[1]);
-                avatar.setImageBitmap(bitmap);
-            }
-
-            userPoints = Integer.valueOf(data.split(";")[3].split("=")[1]);
+            Utils.CURRENT_USER = new Users(username, pays, email, urlImage, points, avatar);
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -154,7 +148,7 @@ public class Main2Activity extends AppCompatActivity
             Bundle data = new Bundle();
             data.putString("username", txtUsername.getText().toString());
             data.putString("email", txtEmail.getText().toString());
-            data.putInt("points", userPoints);
+            data.putInt("points", Utils.CURRENT_USER.getPoints());
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             getBitmapFromDrawable(avatar.getDrawable()).compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -209,10 +203,21 @@ public class Main2Activity extends AppCompatActivity
         return true;
     }
 
-    public void updateUI(String data)
+    public void updateUICalendrier(String data)
     {
         String[] recettes = data.split(";");
-         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, recettes);
-         ((ListView)findViewById(R.id.listCalendrier)).setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, recettes);
+        ((ListView)findViewById(R.id.listCalendrier)).setAdapter(adapter);
+    }
+
+    public void updateUIAmies()
+    {
+        ArrayList<String> amis = new ArrayList<>();
+
+        for(Users user : Utils.AMIS)
+            amis.add(String.format("%s | %s points", user.getUsername(), user.getPoints()));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.liste_custom, amis);
+        ((ListView)findViewById(R.id.listAmies)).setAdapter(adapter);
     }
 }

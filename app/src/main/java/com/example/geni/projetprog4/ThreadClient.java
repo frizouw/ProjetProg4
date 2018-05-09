@@ -99,7 +99,9 @@ public class ThreadClient extends AsyncTask<String,String,Void>
             case "connect" :
                 if(splits[1].equals("true"))
                 {
+                    Log.i("sss", splits[3]);
                     new ThreadEnvoi("allRecettes").executeOnExecutor(THREAD_POOL_EXECUTOR);
+                    Utils.AMIS = new GsonBuilder().create().fromJson(splits[3], new TypeToken<ArrayList<Users>>(){}.getType());
                     //si la connexion est approuvee, commencer la nouvelle activite
                     //partir l'activite pour faire la demande
                     Intent i = new Intent(act, Main2Activity.class);
@@ -135,8 +137,19 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 break;
             case "askCalendrier":
                 String received = splits[1];
-                ((Main2Activity)getCurrentActivity()).updateUI(received);
-
+                ((Main2Activity)getCurrentActivity()).updateUICalendrier(received);
+                break;
+            case "addAmies":
+                if(splits[1].equals("true"))
+                {
+                    Utils.AMIS = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<Users>>(){}.getType());
+                    Log.i("test",splits[2]);
+                    ((Main2Activity)getCurrentActivity()).updateUIAmies();
+                }
+                else
+                {
+                    Toast.makeText(act, "Cette personne n'existe pas!", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
