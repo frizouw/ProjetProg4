@@ -16,15 +16,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
+import static android.content.Intent.getIntent;
+
 public class Calendrier extends Fragment{
 
-    CalendarView calendrier;
-    View v;
+    private CalendarView calendrier;
+    private View v;
     private static int REQUESTCODE =0;
+    private String date;
 
     @Nullable
     @Override
@@ -47,8 +53,14 @@ public class Calendrier extends Fragment{
             new ThreadClient.ThreadEnvoi(String.format("askCalendrier::username=%s;dateChoisie=%s",username,dateChoisie)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
             //recevoir les recettes selon la date selectionnee
-
-                //remettre les recettes dans la listView
+            //la cle du Intent
+                if(getArguments() != null && getArguments().containsKey("askCalendrier"))
+                {
+                    date=getArguments().getString("askCalendrier");
+                    //((ListView)view.findViewById(R.id.listCalendrier)).setAdapter(date.toString());
+                    Log.i("Calendrier", "values du serveur: " + date);
+                }
+            //remettre les recettes dans la listView
 
             }
         });

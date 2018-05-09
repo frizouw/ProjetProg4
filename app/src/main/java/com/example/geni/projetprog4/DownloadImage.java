@@ -12,64 +12,39 @@ import java.net.URL;
 //Classe qui telecharge l'image du url de la DB
 public class DownloadImage extends AsyncTask<String, Void, Bitmap>
 {
-    ImageView bmImage;
-
-    public DownloadImage(ImageView bmImage)
+    private Object obj;
+    public DownloadImage(Object obj)
     {
-        this.bmImage = bmImage;
+        this.obj = obj;
     }
 
     protected Bitmap doInBackground(String... urls)
     {
         String urldisplay = urls[0];
-        Bitmap mIcon11 = null;
+        Bitmap bitmap = null;
         try
         {
             InputStream in = new URL(urldisplay).openStream();
-            mIcon11 = BitmapFactory.decodeStream(in);
+            bitmap = BitmapFactory.decodeStream(in);
         }
         catch (Exception e)
         {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
         }
-        return mIcon11;
+        return bitmap;
     }
 
-    protected void onPostExecute(Bitmap result)
+    @Override
+    protected void onPostExecute(Bitmap bitmap)
     {
-        bmImage.setImageBitmap(result);
-    }
+        if(obj instanceof Users)
+            ((Users)obj).setImage(bitmap);
 
-    public static class DownloadImageBitmap extends AsyncTask<String, Void, Bitmap>
-    {
-        private Recettes recette;
-        public DownloadImageBitmap(Recettes recette)
-        {
-            this.recette = recette;
-        }
+        if(obj instanceof Recettes)
+            ((Recettes)obj).setImage(bitmap);
 
-        protected Bitmap doInBackground(String... urls)
-        {
-            String urldisplay = urls[0];
-            Bitmap bitmap = null;
-            try
-            {
-                InputStream in = new URL(urldisplay).openStream();
-                bitmap = BitmapFactory.decodeStream(in);
-            }
-            catch (Exception e)
-            {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap)
-        {
-            recette.setImage(bitmap);
-        }
+        if(obj instanceof ImageView)
+            ((ImageView)obj).setImageBitmap(bitmap);
     }
 }
