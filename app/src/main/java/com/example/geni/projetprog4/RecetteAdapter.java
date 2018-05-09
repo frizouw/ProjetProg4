@@ -39,6 +39,7 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHo
         return new MyViewHolder(view);
     }
 
+    //Quand on appuie sur le cardview pour en savoir davantage sur les recettes
     @Override
     public void onBindViewHolder(@NonNull RecetteAdapter.MyViewHolder holder, final int position) {
         holder.txt_nom_recette.setText(mData.get(position).getNom());

@@ -61,7 +61,8 @@
         android:layout_alignStart="@+id/lblType"
         android:layout_marginTop="216dp"
         android:text="Niveau de difficulté"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:layout_alignLeft="@+id/lblType" />
 
     <Spinner
         android:id="@+id/spinnerPays"
@@ -72,7 +73,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/spinnerType"
         android:layout_marginTop="159dp"
-        android:background="@drawable/border_spinner" />
+        android:background="@drawable/border_spinner"
+        android:layout_alignParentRight="true" />
 
     <Spinner
         android:id="@+id/spinnerDifficulte"
@@ -83,13 +85,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/spinnerPays"
         android:layout_marginTop="209dp"
-        android:background="@drawable/border_spinner" />
+        android:background="@drawable/border_spinner"
+        android:layout_alignParentRight="true" />
 
     <Button
         android:id="@+id/btnRechercher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinnerDifficulte"
+        android:layout_marginTop="14dp"
         android:layout_toEndOf="@+id/lblPays"
         android:layout_toRightOf="@+id/lblPays"
         android:text="Rechercher" />
@@ -98,17 +102,20 @@
         android:id="@+id/btnAleatoire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/listRecette"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/spinnerDifficulte"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
         android:text="Recette aléatoire" />
 
     <ListView
         android:id="@+id/listRecette"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="300dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnRechercher"
+        android:layout_marginTop="25dp" />
 
 </RelativeLayout>
