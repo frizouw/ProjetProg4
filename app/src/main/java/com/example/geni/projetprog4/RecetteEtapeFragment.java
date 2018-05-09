@@ -39,7 +39,6 @@ public class RecetteEtapeFragment extends Fragment {
         if(getArguments() != null && getArguments().containsKey("recette"))
             recette = Utils.LIST_RECETTES.get(getArguments().getInt("recette"));
         Log.i("test", recette.getNom());
-
         btnAjoutCalendrier.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
