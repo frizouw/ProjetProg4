@@ -7,4 +7,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="noticationtitle">Cooking Jar</string>
+    <string name="notificationtexte">Voici un petit rappel pour votre plat de la journee</string>
 </resources>

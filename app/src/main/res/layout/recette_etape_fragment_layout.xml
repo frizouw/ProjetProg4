@@ -38,4 +38,14 @@
                 android:text="TextView" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnAjoutCalendrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="37dp"
+        android:layout_marginEnd="33dp"
+        android:text="Ajouter a mon calendrier" />
 </RelativeLayout>
