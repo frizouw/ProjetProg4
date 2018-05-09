@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RecetteResumeFragment extends Fragment {
@@ -25,10 +27,10 @@ public class RecetteResumeFragment extends Fragment {
         view = inflater.inflate(R.layout.recette_resume_fragment_layout, container, false);
         if(getArguments() != null && getArguments().containsKey("recette"))
         {
-            Log.i("test", String.valueOf(getArguments().getInt("recette")));
             recette = Utils.LIST_RECETTES.get(getArguments().getInt("recette"));
 
-            Log.i("test", recette.getNom());
+            ((TextView)view.findViewById(R.id.txtNomRecette)).setText(recette.getNom());
+            ((ImageView)view.findViewById(R.id.imgRecette)).setImageBitmap(recette.getImage());
         }
         return view;
     }

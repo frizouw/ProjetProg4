@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TextView;
 
 public class RecetteEtapeFragment extends Fragment {
 
@@ -37,8 +38,13 @@ public class RecetteEtapeFragment extends Fragment {
         btnAjoutCalendrier = (Button) view.findViewById(R.id.btnAjoutCalendrier);
 
         if(getArguments() != null && getArguments().containsKey("recette"))
+        {
             recette = Utils.LIST_RECETTES.get(getArguments().getInt("recette"));
-        Log.i("test", recette.getNom());
+            ((TextView)view.findViewById(R.id.txtEtapesRecette)).setText(recette.getPreparation());
+        }
+
+
+
         btnAjoutCalendrier.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override

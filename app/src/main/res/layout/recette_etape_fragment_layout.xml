@@ -17,7 +17,7 @@
         android:gravity="center"
         android:text="Les étapes de la recette"
         android:textColor="#ff871d"
-        android:textSize="36sp" />
+        android:textSize="34sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,5 +47,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="37dp"
         android:layout_marginEnd="33dp"
-        android:text="Ajouter a mon calendrier" />
+        android:text="Ajouter a mon calendrier"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
