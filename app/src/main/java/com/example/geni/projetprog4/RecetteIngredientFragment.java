@@ -47,6 +47,7 @@ public class RecetteIngredientFragment extends Fragment {
                 //mettre dans une arraylist
 
                 //passer dans une item
+                //dans un bundle
                 //this, listeEpicerie.class
 
             }
