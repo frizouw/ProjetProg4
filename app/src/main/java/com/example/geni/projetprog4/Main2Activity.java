@@ -44,7 +44,6 @@ public class Main2Activity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView txtUsername, txtEmail;
     private ImageView avatar;
-    private int userPoints = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +67,14 @@ public class Main2Activity extends AppCompatActivity
         {
             String data = (String) intent.getStringExtra("data");
             //Implément le TextView
-            txtUsername.setText(data.split(";")[0].split("=")[1]);
-            txtEmail.setText(data.split(";")[1].split("=")[1]);
-
-            String imageUrl = data.split(";")[2].split("=")[1];
-            if(imageUrl.startsWith("http"))
-            {
-                new DownloadImage(avatar).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, imageUrl);
-            }
-            else
-            {
-                Bitmap bitmap = BitmapFactory.decodeFile(data.split(";")[2].split("=")[1]);
-                avatar.setImageBitmap(bitmap);
-            }
-
-            userPoints = Integer.valueOf(data.split(";")[3].split("=")[1]);
+            String user = data.split(";")[0].split("=")[1];
+            String pays = data.split(";")[1].split("=")[1];
+            String email = data.split(";")[2].split("=")[1];
+            String urlImage = data.split(";")[3].split("=")[1];
+            int points = Integer.valueOf(data.split(";")[4].split("=")[1]);
+            Utils.CURRENT_USER = new Users(user, pays, email, urlImage, points, avatar);
+            txtUsername.setText(Utils.CURRENT_USER.getUsername());
+            txtEmail.setText(Utils.CURRENT_USER.getCourriel());
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -124,28 +116,6 @@ public class Main2Activity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -161,9 +131,9 @@ public class Main2Activity extends AppCompatActivity
         {
             ProfileFragment frag = new ProfileFragment();
             Bundle data = new Bundle();
-            data.putString("username", txtUsername.getText().toString());
-            data.putString("email", txtEmail.getText().toString());
-            data.putInt("points", userPoints);
+            data.putString("username", Utils.CURRENT_USER.getUsername());
+            data.putString("email", Utils.CURRENT_USER.getCourriel());
+            data.putInt("points", Utils.CURRENT_USER.getPoints());
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             getBitmapFromDrawable(avatar.getDrawable()).compress(Bitmap.CompressFormat.PNG, 100, stream);
