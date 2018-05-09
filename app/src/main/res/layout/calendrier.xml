@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutCal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient">
@@ -12,11 +13,12 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        android:theme="@style/CalenderViewCustom"
         android:dateTextAppearance="@style/CalenderViewDateCustomText"
-        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>
+        android:theme="@style/CalenderViewCustom"
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText" />
 
     <ListView
+        android:id="@+id/listCalendrier"
         android:layout_width="380dp"
         android:layout_height="197dp"
         android:layout_alignParentBottom="true"

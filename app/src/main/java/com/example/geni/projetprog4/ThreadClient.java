@@ -1,8 +1,11 @@
 package com.example.geni.projetprog4;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,9 +18,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class ThreadClient extends AsyncTask<String,String,Void>
@@ -128,6 +133,10 @@ public class ThreadClient extends AsyncTask<String,String,Void>
 
                 Utils.LIST_RECETTES = temps;
                 break;
+            case "askCalendrier":
+                String received = splits[1];
+                ((Main2Activity)getCurrentActivity()).updateUI(received);
+                break;
         }
     }
 
@@ -166,5 +175,39 @@ public class ThreadClient extends AsyncTask<String,String,Void>
             }
         }
     }
+    // https://stackoverflow.com/questions/11411395/how-to-get-current-foreground-activity-context-in-android/28423385#28423385
+    public static Activity getCurrentActivity()
+    {
+        try
+        {
+            Class activityThreadClass = Class.forName("android.app.ActivityThread");
+            Object activityThread = activityThreadClass.getMethod("currentActivityThread").invoke(null);
+            Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
+            activitiesField.setAccessible(true);
+
+            Map<Object, Object> activities = (Map<Object, Object>) activitiesField.get(activityThread);
+            if (activities == null)
+                return null;
+
+            for (Object activityRecord : activities.values()) {
+                Class activityRecordClass = activityRecord.getClass();
+                Field pausedField = activityRecordClass.getDeclaredField("paused");
+                pausedField.setAccessible(true);
+                if (!pausedField.getBoolean(activityRecord)) {
+                    Field activityField = activityRecordClass.getDeclaredField("activity");
+                    activityField.setAccessible(true);
+                    Activity activity = (Activity) activityField.get(activityRecord);
+                    return activity;
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            Log.e("Error", e.getMessage());
+        }
+
+        return null;
+    }
+
     //https://github.com/codepath/android_guides/wiki/Sending-and-Receiving-Data-with-Sockets
 }
