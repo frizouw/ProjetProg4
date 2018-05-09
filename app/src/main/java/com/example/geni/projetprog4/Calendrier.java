@@ -77,7 +77,9 @@ public class Calendrier extends Fragment{
         NotificationCompat.Builder builderNotif = new NotificationCompat.Builder(getContext());
         builderNotif.setContentTitle(getString(R.string.noticationtitle))
                 .setContentText(getString(R.string.notificationtexte))
-                .setSmallIcon(R.mipmap.ic_launcher);
+                .addAction(R.drawable.logo, "Recette de la journee",pendingIntent)
+                .addAction(R.drawable.ic_menu_manage, "Cancel", pendingIntent)
+                .setSmallIcon(R.mipmap.ic_launcher_round);
         //construire la notification
         Notification notif = builderNotif.build();
         //creer objet notifManag
