@@ -11,6 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:fontFamily="@font/bubblegum_sans"
         android:gravity="center"
         android:text="Les ingrédients"
         android:textColor="#ff871d"

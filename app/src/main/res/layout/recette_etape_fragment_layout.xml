@@ -14,6 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:fontFamily="@font/bubblegum_sans"
         android:gravity="center"
         android:text="Les étapes de la recette"
         android:textColor="#ff871d"
@@ -35,7 +36,8 @@
                 android:id="@+id/txtEtapesRecette"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </ScrollView>
 
