@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bubblegum_sans"
         android:gravity="center"
-        android:paddingTop="5dp"
+        android:paddingTop="35dp"
         android:text="Bienvenue!"
         android:textColor="#ff871d"
         android:textSize="36sp" />

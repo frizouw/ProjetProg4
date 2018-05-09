@@ -39,7 +39,6 @@
         android:layout_alignLeft="@+id/txtIdentifiantConnexion"
         android:layout_alignStart="@+id/txtIdentifiantConnexion"
         android:layout_below="@+id/txtIdentifiantProfile"
-        android:layout_marginTop="15dp"
         android:text="Courriel :"
         android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="155dp"
