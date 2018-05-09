@@ -48,6 +48,8 @@ public class Calendrier extends Fragment{
 
             //recevoir les recettes selon la date selectionnee
 
+                //remettre les recettes dans la listView
+
             }
         });
 
