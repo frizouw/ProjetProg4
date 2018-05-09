@@ -134,7 +134,8 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 Utils.LIST_RECETTES = temps;
                 break;
             case "askCalendrier":
-
+                String received = splits[1];
+                ((Main2Activity)getCurrentActivity()).updateUI(received);
 
                 break;
         }

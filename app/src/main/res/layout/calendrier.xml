@@ -9,7 +9,7 @@
         android:id="@+id/calendarView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/listView"
+        android:layout_above="@+id/listCalendrier"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="21dp"
         android:dateTextAppearance="@style/CalenderViewDateCustomText"
@@ -17,7 +17,7 @@
         android:weekDayTextAppearance="@style/CalenderViewWeekCustomText" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listCalendrier"
         android:layout_width="380dp"
         android:layout_height="160dp"
         android:layout_alignParentBottom="true"

@@ -24,7 +24,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -205,5 +207,12 @@ public class Main2Activity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void updateUI(String data)
+    {
+        String[] recettes = data.split(";");
+         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, recettes);
+         ((ListView)findViewById(R.id.listCalendrier)).setAdapter(adapter);
     }
 }
