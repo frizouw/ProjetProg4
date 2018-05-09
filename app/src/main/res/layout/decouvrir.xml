@@ -13,6 +13,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Découvrir de nouvelles saveurs"
         android:textAlignment="center"
         android:textColor="#ff871d"
@@ -36,6 +37,8 @@
         android:layout_width="261dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/lblType"
+        android:layout_alignEnd="@+id/btnAleatoire"
+        android:layout_alignRight="@+id/btnAleatoire"
         android:layout_marginLeft="107dp"
         android:layout_marginStart="107dp"
         android:layout_toEndOf="@+id/lblType"
@@ -68,34 +71,34 @@
         android:id="@+id/spinnerPays"
         android:layout_width="263dp"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnAleatoire"
         android:layout_alignLeft="@+id/spinnerType"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/btnAleatoire"
         android:layout_alignStart="@+id/spinnerType"
         android:layout_marginTop="159dp"
-        android:background="@drawable/border_spinner"
-        android:layout_alignParentRight="true" />
+        android:background="@drawable/border_spinner" />
 
     <Spinner
         android:id="@+id/spinnerDifficulte"
         android:layout_width="261dp"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnAleatoire"
         android:layout_alignLeft="@+id/spinnerPays"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/btnAleatoire"
         android:layout_alignStart="@+id/spinnerPays"
         android:layout_marginTop="209dp"
-        android:background="@drawable/border_spinner"
-        android:layout_alignParentRight="true" />
+        android:background="@drawable/border_spinner" />
 
     <Button
         android:id="@+id/btnRechercher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblDifficulte"
+        android:layout_alignStart="@+id/lblDifficulte"
         android:layout_below="@+id/spinnerDifficulte"
-        android:layout_marginTop="14dp"
-        android:layout_toEndOf="@+id/lblPays"
-        android:layout_toRightOf="@+id/lblPays"
+        android:layout_marginTop="13dp"
         android:text="Rechercher" />
 
     <Button

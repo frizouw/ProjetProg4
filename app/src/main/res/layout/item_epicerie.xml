@@ -12,7 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_weight="1"
         android:width="0dp"
-        android:focusable="false" />
+        android:focusable="false"
+        android:textColorLink="@android:color/holo_orange_dark" />
 
     <TextView
         android:id="@+id/list_view_item_text"
@@ -21,5 +22,6 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/list_view_item_checkbox"
         android:layout_weight="9"
+        android:textColor="@android:color/white"
         android:textSize="20dp" />
 </RelativeLayout>

@@ -17,7 +17,7 @@
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="334dp"
         app:fillColor="#FFFFFFFF"
         app:pageColor="#00000000"
         app:radius="6dp"
@@ -29,7 +29,9 @@
         android:id="@+id/txtTitreAcceuil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bubblegum_sans"
         android:gravity="center"
+        android:paddingTop="5dp"
         android:text="Bienvenue!"
         android:textColor="#ff871d"
         android:textSize="36sp" />
@@ -38,8 +40,9 @@
         android:id="@+id/txtDescriptionApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Les développeurs de l'application android Cooking jar vous souhaite la bienvenue et désirs vous expliquez le fonctionnement de l'application dès votre première utilisation. Cette application a pour but d'améliorer vos compétences de cuisine, tout en améliorant vos connaissances sur divers mets culturels. De plus, ils vous est possible de compétitionner contre vos ami(e)s et de leurs montrer en quoi vous êtes capable."
+        android:text="Application créé par : Anthony Whelan, Claire bun et Genevieve Rollin"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 

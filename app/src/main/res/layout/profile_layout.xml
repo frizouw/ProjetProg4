@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient">
 
     <TextView
         android:id="@+id/txtIdentifiantConnexion"
@@ -11,7 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imgAvatarProfile"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
         android:text="Username :"
+        android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -19,15 +22,15 @@
         android:id="@+id/imgAvatarProfile"
         android:layout_width="125dp"
         android:layout_height="151dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btnSupprimerCompte"
-        android:layout_marginStart="-6dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="54dp"
         app:srcCompat="@mipmap/ic_launcher_round"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_marginLeft="-6dp"
-        android:layout_alignLeft="@+id/btnSupprimerCompte" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/lblCourrielProfile"
@@ -36,8 +39,9 @@
         android:layout_alignLeft="@+id/txtIdentifiantConnexion"
         android:layout_alignStart="@+id/txtIdentifiantConnexion"
         android:layout_below="@+id/txtIdentifiantProfile"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="15dp"
         android:text="Courriel :"
+        android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="63dp" />
 
@@ -45,13 +49,13 @@
         android:id="@+id/imgPointage"
         android:layout_width="31dp"
         android:layout_height="32dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/txtIdentifiantConnexion"
-        android:layout_marginTop="125dp"
+        android:layout_alignLeft="@+id/lblCourrielProfile"
+        android:layout_alignStart="@+id/lblCourrielProfile"
+        android:layout_below="@+id/lblCourrielProfile"
+        android:layout_marginTop="18dp"
         app:srcCompat="@drawable/ic_currency"
         tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="108dp"
-        android:layout_alignLeft="@+id/txtIdentifiantConnexion" />
+        tools:layout_editor_absoluteY="108dp" />
 
     <TextView
         android:id="@+id/txtCourrielProfile"
@@ -62,6 +66,7 @@
         android:layout_toEndOf="@+id/txtIdentifiantConnexion"
         android:layout_toRightOf="@+id/txtIdentifiantConnexion"
         android:text="Patate3@gmail.ca"
+        android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="156dp"
         tools:layout_editor_absoluteY="82dp" />
 
@@ -74,6 +79,7 @@
         android:layout_toEndOf="@+id/txtIdentifiantConnexion"
         android:layout_toRightOf="@+id/txtIdentifiantConnexion"
         android:text="Patate3000"
+        android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="35dp" />
 
@@ -82,33 +88,25 @@
         android:layout_width="151dp"
         android:layout_height="23dp"
         android:layout_alignBottom="@+id/imgPointage"
-        android:layout_alignEnd="@+id/btnModifierCompte"
-        android:layout_alignRight="@+id/btnModifierCompte"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/imgPointage"
+        android:layout_toRightOf="@+id/imgPointage"
         android:text="35264"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="192dp"
         tools:layout_editor_absoluteY="116dp" />
 
-    <Button
-        android:id="@+id/btnSupprimerCompte"
-        android:layout_width="327dp"
-        android:layout_height="47dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp"
-        android:text="Supprimer mon compte"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="448dp" />
-
-    <Button
-        android:id="@+id/btnModifierCompte"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnSupprimerCompte"
-        android:layout_alignEnd="@+id/btnSupprimerCompte"
-        android:layout_alignLeft="@+id/btnSupprimerCompte"
-        android:layout_alignRight="@+id/btnSupprimerCompte"
-        android:layout_alignStart="@+id/btnSupprimerCompte"
-        android:layout_marginBottom="8dp"
-        android:text="Modifier mon compte" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Mon profile"
+        android:textColor="#ff871d"
+        android:textSize="36sp" />
+
 </RelativeLayout>

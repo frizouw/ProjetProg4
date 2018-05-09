@@ -48,7 +48,7 @@ public class Decouvrir extends Fragment {
         spinnerRecette.setAdapter(adapterRecette);
 
         //Remplir le spinner de pays
-        String[] pays = {"Canada", "Japon", "Angleterre", "France", "Chine"};
+        String[] pays = {"Canada", "Japon", "Angleterre", "France", "Chine", "USA", "Italie", "Thailand", "Inde", "Coreen", "Espagne", "Russie", "Liban"};
         ArrayAdapter<String> adapterPays = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, pays);
         adapterPays.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerPays.setAdapter(adapterPays);

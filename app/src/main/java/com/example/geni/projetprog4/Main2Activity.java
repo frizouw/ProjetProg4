@@ -138,11 +138,6 @@ public class Main2Activity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -199,8 +194,8 @@ public class Main2Activity extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder
             .setTitle("Déconnexion")
-            .setMessage("Êtes-vous sure de vouloir vous déconnectez?")
-            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setMessage("Êtes-vous sure de vouloir vous déconnecter?")
+            .setIcon(R.drawable.ic_warning_black_24dp)
             .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
