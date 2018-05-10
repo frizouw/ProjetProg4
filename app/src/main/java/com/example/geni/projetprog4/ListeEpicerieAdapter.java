@@ -1,53 +1,53 @@
 package com.example.geni.projetprog4;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
-public class ListeEpicerieAdapter extends BaseAdapter {
+import org.w3c.dom.Text;
 
-    //SOURCE: https://demonuts.com/listview-checkbox/
-    Context context;
-    String[] data;
-    private static LayoutInflater inflater = null;
+import java.util.ArrayList;
 
-    public ListeEpicerieAdapter(Context context, String[] data) {
-        // TODO Auto-generated constructor stub
+public class ListeEpicerieAdapter extends ArrayAdapter<ItemEpicerie>
+{
+    private Context context;
+    private ArrayList<ItemEpicerie> liste;
+    public ListeEpicerieAdapter(@NonNull Context context, ArrayList<ItemEpicerie> liste)
+    {
+        super(context, R.layout.item_epicerie, liste);
         this.context = context;
-        this.data = data;
-        inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.liste = liste;
     }
 
     @Override
-    public int getCount() {
-        // TODO Auto-generated method stub
-        return data.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        // TODO Auto-generated method stub
-        return data[position];
-    }
-
-    @Override
-    public long getItemId(int position) {
-        // TODO Auto-generated method stub
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
+    public View getView(final int position, View convertView, ViewGroup parent)
+    {
         View vi = convertView;
         if (vi == null)
-            vi = inflater.inflate(R.layout.item_epicerie, null);
+            vi = LayoutInflater.from(context).inflate(R.layout.item_epicerie, parent,false);
+
+        CheckBox box = (CheckBox)vi.findViewById(R.id.list_view_item_checkbox);
         TextView text = (TextView) vi.findViewById(R.id.list_view_item_text);
-        text.setText(data[position]);
+
+        ItemEpicerie item = getItem(position);
+        box.setChecked(item.isChecked);
+        text.setText(item.nom);
+
+        box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                ItemEpicerie item = getItem(position);
+                item.isChecked = isChecked;
+            }
+        });
+
         return vi;
     }
 }

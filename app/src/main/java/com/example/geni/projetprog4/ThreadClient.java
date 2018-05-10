@@ -102,6 +102,17 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                     Log.i("sss", splits[3]);
                     new ThreadEnvoi("allRecettes").executeOnExecutor(THREAD_POOL_EXECUTOR);
                     Utils.AMIS = new GsonBuilder().create().fromJson(splits[3], new TypeToken<ArrayList<Users>>(){}.getType());
+                    ArrayList<String> epiceries = new GsonBuilder().create().fromJson(splits[4], new TypeToken<ArrayList<String>>(){}.getType());
+                    if(epiceries != null && epiceries.size() > 0)
+                    {
+                        ArrayList<ItemEpicerie> tempItems = new ArrayList<>();
+                        for(String s : epiceries)
+                        {
+                            tempItems.add(new ItemEpicerie(s, false));
+                        }
+                        Utils.LISTE_EPICERIE = tempItems;
+                    }
+
                     //si la connexion est approuvee, commencer la nouvelle activite
                     //partir l'activite pour faire la demande
                     Intent i = new Intent(act, Main2Activity.class);

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ListeEpicerie extends Fragment {
 
@@ -34,7 +35,7 @@ public class ListeEpicerie extends Fragment {
         listeEpicerie.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         //listeEpicerie.setChoiceMode(ListView.CHOICE_MODE_NONE);
 
-        listeEpicerie.setAdapter( new ListeEpicerieAdapter(getActivity(),new String[] { "Pomme","patate", "Boeuf", }));
+        listeEpicerie.setAdapter( new ListeEpicerieAdapter(getActivity(), Utils.LISTE_EPICERIE));
 
         //lors de la selection
         listeEpicerie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
