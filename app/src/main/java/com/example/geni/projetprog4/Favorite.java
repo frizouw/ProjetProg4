@@ -16,9 +16,9 @@ import java.util.List;
 public class Favorite extends Fragment {
 
     //Proprietes
-    View v;
-    RecyclerView recyclerView;
-    List<Recettes> list_recette;
+    private View v;
+    private RecyclerView recyclerView;
+    private List<Recettes> list_recette;
 
     @Nullable
     @Override

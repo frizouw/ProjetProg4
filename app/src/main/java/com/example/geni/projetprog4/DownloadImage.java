@@ -12,12 +12,16 @@ import java.net.URL;
 //Classe qui telecharge l'image du url de la DB
 public class DownloadImage extends AsyncTask<String, Void, Bitmap>
 {
+    //Proprietes
     private Object obj;
+
+    //Constructeur
     public DownloadImage(Object obj)
     {
         this.obj = obj;
     }
 
+    //Methode doInBackground du Asyntask
     protected Bitmap doInBackground(String... urls)
     {
         String urldisplay = urls[0];

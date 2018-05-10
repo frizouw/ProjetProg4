@@ -203,13 +203,16 @@ public class Main2Activity extends AppCompatActivity
         return true;
     }
 
+    //Methode pour update l'interface du calendrier
     public void updateUICalendrier(String data)
     {
         String[] recettes = data.split(";");
+        //montre les recettes selectionnees a la date
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, recettes);
         ((ListView)findViewById(R.id.listCalendrier)).setAdapter(adapter);
     }
 
+    //Methode pour update le ui de la liste d'amis
     public void updateUIAmies()
     {
         ArrayList<String> amis = new ArrayList<>();

@@ -1,6 +1,7 @@
 package com.example.geni.projetprog4;
 
 import android.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
@@ -20,9 +22,10 @@ import java.util.Arrays;
 
 public class ListeEpicerie extends Fragment {
 
-    View v;
-    ListView listeEpicerie;
-    CheckBox check;
+    //Variables
+    private View v;
+    private ListView listeEpicerie;
+    private Button btnRetirer;
 
     @Nullable
     @Override
@@ -30,23 +33,29 @@ public class ListeEpicerie extends Fragment {
         //associer le layout de la liste a la classe
         v = inflater.inflate(R.layout.liste_epicerie,container,false);
         listeEpicerie = (ListView)v.findViewById(R.id.listeEpicerie);
-        check = (CheckBox)v.findViewById(R.id.list_view_item_checkbox);
-        //MODE
-        listeEpicerie.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        //listeEpicerie.setChoiceMode(ListView.CHOICE_MODE_NONE);
+        btnRetirer = (Button) v.findViewById(R.id.btnRetirer);
 
+        //prendre les items selectionnes des recettes
         listeEpicerie.setAdapter( new ListeEpicerieAdapter(getActivity(), Utils.LISTE_EPICERIE));
 
-        //lors de la selection
-        listeEpicerie.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //action pour le bouton de retirer l'element de la liste
+        btnRetirer.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onClick(View v) {
+                //retire les elements selectionnees dans la liste
+                for(int i = 0; i < listeEpicerie.getCount(); i++)
+                {
+                    ItemEpicerie item = (ItemEpicerie)listeEpicerie.getItemAtPosition(i);
+                    if(item.isChecked)
+                    {
+                        item.isChecked = false;
+                        Utils.LISTE_EPICERIE.remove(item);
+                        new ThreadClient.ThreadEnvoi(String.format("removeIngredient::userID=%s;ingredient=%s", Utils.CURRENT_USER.getUsername(), item.nom)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                    }
+                }
             }
         });
 
         return  v;
     }
-
-    //prendre les ingredients de l'utilisateur, afficher dans le arrraylist les items dans la listeView via le arrayadapter
 }

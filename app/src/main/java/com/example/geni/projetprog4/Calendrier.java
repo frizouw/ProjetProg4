@@ -27,6 +27,7 @@ import static android.content.Intent.getIntent;
 
 public class Calendrier extends Fragment{
 
+    //Variables
     private CalendarView calendrier;
     private View v;
     private static int REQUESTCODE =0;
@@ -44,6 +45,7 @@ public class Calendrier extends Fragment{
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+            //prendre la date selectionnee dans la calendarView
              String dateChoisie = dayOfMonth +" / " + (month+1) + " / " + year;
             //appelle de la methode pour la notification
             Notification();
@@ -67,6 +69,7 @@ public class Calendrier extends Fragment{
         return  v;
     }
 
+    //Methode public pour creer la notification
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void Notification(){
         Intent i = new Intent(getContext(), Main2Activity.class);
