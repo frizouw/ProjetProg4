@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RecetteEtapeFragment extends Fragment {
 
@@ -78,6 +79,8 @@ public class RecetteEtapeFragment extends Fragment {
                         //thread qui envoie les donnees au serveur et qui les insert dans la BD
                         new ThreadClient.ThreadEnvoi(String.format("envoieCalendrier::username=%s;nomRecette=%s;dateChoisie=%s",username, nomRecette,dateChoisie)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         Log.i("RecetteEnregistrement", "values: " + username + " " + nomRecette + " " + dateChoisie);
+                        Toast.makeText(getActivity(), "Recette ajouté au calendrier", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                     }
                 });
 

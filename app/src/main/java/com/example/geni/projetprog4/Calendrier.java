@@ -1,10 +1,13 @@
 package com.example.geni.projetprog4;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +35,7 @@ public class Calendrier extends Fragment{
     private View v;
     private static int REQUESTCODE =0;
     private String date;
+    private int id = 0;
 
     @Nullable
     @Override
@@ -48,7 +52,8 @@ public class Calendrier extends Fragment{
             //prendre la date selectionnee dans la calendarView
              String dateChoisie = dayOfMonth +" / " + (month+1) + " / " + year;
             //appelle de la methode pour la notification
-            Notification();
+            //Notification();
+            //Notifier();
 
             //envoie une demande pour prendre les recettes selon le username et la date selectionnee
             new ThreadClient.ThreadEnvoi(String.format("askCalendrier::username=%s;dateChoisie=%s",Utils.CURRENT_USER.getUsername(),dateChoisie)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -67,26 +72,5 @@ public class Calendrier extends Fragment{
         });
 
         return  v;
-    }
-
-    //Methode public pour creer la notification
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public void Notification(){
-        Intent i = new Intent(getContext(), Main2Activity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), REQUESTCODE,i,PendingIntent.FLAG_UPDATE_CURRENT);
-        //creer la notification
-        Notification.Builder builder = new Notification.Builder(getContext());
-        NotificationCompat.Builder builderNotif = new NotificationCompat.Builder(getContext());
-        builderNotif.setContentTitle(getString(R.string.noticationtitle))
-                .setContentText(getString(R.string.notificationtexte))
-                .addAction(R.drawable.logo, "Recette de la journee",pendingIntent)
-                .addAction(R.drawable.ic_menu_manage, "Cancel", pendingIntent)
-                .setSmallIcon(R.mipmap.ic_launcher_round);
-        //construire la notification
-        Notification notif = builderNotif.build();
-        //creer objet notifManag
-        NotificationManager notifManag = ( NotificationManager ) getActivity().getSystemService( getActivity().NOTIFICATION_SERVICE );
-        //lancer l'application
-        notifManag.notify(0,notif);
     }
 }

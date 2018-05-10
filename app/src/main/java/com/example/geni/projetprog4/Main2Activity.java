@@ -1,7 +1,12 @@
 package com.example.geni.projetprog4;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +20,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -47,6 +53,8 @@ public class Main2Activity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView txtUsername, txtEmail;
     private ImageView avatar;
+    private static int REQUESTCODE =0;
+    private int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +74,7 @@ public class Main2Activity extends AppCompatActivity
         //Récupérer l'intent
         Intent intent = getIntent();
         //Emmagasiner l'extra du username dans une variable *Peut être optimisé I guess*
-        if(intent.getExtras().containsKey("data"))
+        if(intent != null && intent.getExtras().containsKey("data"))
         {
             String data = intent.getStringExtra("data");
             String username = data.split(";")[0].split("=")[1];
@@ -207,9 +215,62 @@ public class Main2Activity extends AppCompatActivity
     public void updateUICalendrier(String data)
     {
         String[] recettes = data.split(";");
-        //montre les recettes selectionnees a la date
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, recettes);
-        ((ListView)findViewById(R.id.listCalendrier)).setAdapter(adapter);
+        if(!recettes[0].equals("null"))
+        {
+            //montre les recettes selectionnees a la date
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, recettes);
+            ((ListView)findViewById(R.id.listCalendrier)).setAdapter(adapter);
+            Notifier();
+        }
+        else
+        {
+            ((ListView)findViewById(R.id.listCalendrier)).setAdapter(null);
+        }
+    }
+
+    //Methode public pour creer la notification
+    public void Notifier()
+    {
+        Notification notif;
+        NotificationManager notifManag;
+        Intent i = new Intent(this, Main2Activity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, REQUESTCODE,i,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Pour API 26+
+        if (android.os.Build.VERSION.SDK_INT >= 26)
+        {
+            //Créer une notification
+            notif = new NotificationCompat.Builder(this).setContentTitle(getString(R.string.noticationtitle))
+                    .setContentText(getString(R.string.notificationtexte))
+                    //.addAction(R.drawable.logo, "Recette de la journee",pendingIntent)
+                    //.addAction(R.drawable.ic_menu_manage, "Cancel", pendingIntent)
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
+                    .setDefaults(Notification.DEFAULT_ALL)
+                    .setChannelId("id")
+                    .build();
+
+            // Créer le channel
+            NotificationChannel notificationChannel = new NotificationChannel("id", "channel", NotificationManager.IMPORTANCE_DEFAULT);
+            notifManag = (NotificationManager) getSystemService(Activity.NOTIFICATION_SERVICE);
+            notifManag.createNotificationChannel(notificationChannel);
+        }
+        // Pour API 25 et moins
+        else
+        {
+            //Créer une notification
+            notif = new NotificationCompat.Builder(this).setContentTitle(getString(R.string.noticationtitle))
+                    .setContentText(getString(R.string.notificationtexte))
+                    //.addAction(R.drawable.logo, "Recette de la journee",pendingIntent)
+                    //.addAction(R.drawable.ic_menu_manage, "Cancel", pendingIntent)
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
+                    .setDefaults(Notification.DEFAULT_ALL)
+                    .build();
+            notifManag = (NotificationManager) getSystemService(Activity.NOTIFICATION_SERVICE);
+        }
+        // Afciher la notification
+        notifManag.notify(id,notif);
+        // Permettre plusieurs notifications
+        id++;
     }
 
     //Methode pour update le ui de la liste d'amis
