@@ -28,6 +28,7 @@ public class Users
         else
         {
             image = BitmapFactory.decodeFile(urlImage);
+            img.setImageBitmap(image);
         }
         this.points = points;
     }
