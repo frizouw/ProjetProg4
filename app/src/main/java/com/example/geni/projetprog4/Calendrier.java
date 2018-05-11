@@ -33,9 +33,7 @@ public class Calendrier extends Fragment{
     //Variables
     private CalendarView calendrier;
     private View v;
-    private static int REQUESTCODE =0;
     private String date;
-    private int id = 0;
 
     @Nullable
     @Override
@@ -51,9 +49,6 @@ public class Calendrier extends Fragment{
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
             //prendre la date selectionnee dans la calendarView
              String dateChoisie = dayOfMonth +" / " + (month+1) + " / " + year;
-            //appelle de la methode pour la notification
-            //Notification();
-            //Notifier();
 
             //envoie une demande pour prendre les recettes selon le username et la date selectionnee
             new ThreadClient.ThreadEnvoi(String.format("askCalendrier::username=%s;dateChoisie=%s",Utils.CURRENT_USER.getUsername(),dateChoisie)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -66,8 +61,6 @@ public class Calendrier extends Fragment{
                     //((ListView)view.findViewById(R.id.listCalendrier)).setAdapter(date.toString());
                     Log.i("Calendrier", "values du serveur: " + date);
                 }
-            //remettre les recettes dans la listView
-
             }
         });
 

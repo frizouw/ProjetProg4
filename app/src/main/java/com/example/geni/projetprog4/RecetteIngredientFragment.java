@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class RecetteIngredientFragment extends Fragment {
 
-
+    //Proprietes
     private Recettes recette;
     private Button btnAjoute;
     private String[] ingredients;
@@ -42,7 +42,7 @@ public class RecetteIngredientFragment extends Fragment {
                 listeIngredients.add(new ItemEpicerie(s, false));
             }
 
-            //ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.liste_custom, ingredients);
+            //set avec le custom adapter
             listView.setAdapter(new ListeEpicerieAdapter(getContext(), listeIngredients));
         }
 
@@ -61,7 +61,7 @@ public class RecetteIngredientFragment extends Fragment {
                         ingredients += item.nom.trim() + "$$";
                     }
                 }
-
+                //demande d'envoie du cote serveur
                 new ThreadClient.ThreadEnvoi(String.format("addIngredient::userID=%s;ingredient=%s", Utils.CURRENT_USER.getUsername(), ingredients.substring(0,ingredients.length() - 2))).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
         });

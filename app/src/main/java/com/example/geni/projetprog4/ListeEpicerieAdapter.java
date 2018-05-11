@@ -17,8 +17,11 @@ import java.util.ArrayList;
 
 public class ListeEpicerieAdapter extends ArrayAdapter<ItemEpicerie>
 {
+    //Proprietes
     private Context context;
     private ArrayList<ItemEpicerie> liste;
+
+    //Constructeur par parametre
     public ListeEpicerieAdapter(@NonNull Context context, ArrayList<ItemEpicerie> liste)
     {
         super(context, R.layout.item_epicerie, liste);
@@ -29,6 +32,7 @@ public class ListeEpicerieAdapter extends ArrayAdapter<ItemEpicerie>
     @Override
     public View getView(final int position, View convertView, ViewGroup parent)
     {
+        //mettre les items dans les textviews
         View vi = convertView;
         if (vi == null)
             vi = LayoutInflater.from(context).inflate(R.layout.item_epicerie, parent,false);
@@ -40,6 +44,7 @@ public class ListeEpicerieAdapter extends ArrayAdapter<ItemEpicerie>
         box.setChecked(item.isChecked);
         text.setText(item.nom);
 
+        //verifier si le checkbox est coche
         box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

@@ -150,6 +150,7 @@ public class Main3Activity extends AppCompatActivity {
         return tableauBytes;
     }
 
+    //Methode pour prendre le path
     public String getPath(Uri uri)
     {
         String[] projection = { MediaStore.Images.Media.DATA };

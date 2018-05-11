@@ -23,6 +23,7 @@ public class ProfileFragment extends Fragment
         vue = inflater.inflate(R.layout.profile_layout, container, false);
         if(this.getArguments() != null)
         {
+            //prendre les elements pour le fragment du profile
             byte[] avatar = this.getArguments().getByteArray("avatar");
             Bitmap bmp = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
             ((ImageView)vue.findViewById(R.id.imgAvatarProfile)).setImageBitmap(bmp);

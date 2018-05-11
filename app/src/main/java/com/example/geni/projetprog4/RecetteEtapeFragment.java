@@ -20,13 +20,15 @@ import android.widget.Toast;
 
 public class RecetteEtapeFragment extends Fragment {
 
-    View view;
+    //Proprietes
+    private View view;
     private Recettes recette;
     private Button btnAjoutCalendrier;
     private Button btnSave, btnCancel;
     private CalendarView calendarView;
     private static  String selectedDate;
 
+    //Constructeur
     public RecetteEtapeFragment()
     {
 
@@ -38,6 +40,7 @@ public class RecetteEtapeFragment extends Fragment {
         view = inflater.inflate(R.layout.recette_etape_fragment_layout, container, false);
         btnAjoutCalendrier = (Button) view.findViewById(R.id.btnAjoutCalendrier);
 
+        //prendre les elements avec le key recette
         if(getArguments() != null && getArguments().containsKey("recette"))
         {
             recette = Utils.LIST_RECETTES.get(getArguments().getInt("recette"));
@@ -45,7 +48,7 @@ public class RecetteEtapeFragment extends Fragment {
         }
 
 
-
+        //pour ajouter
         btnAjoutCalendrier.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override

@@ -18,8 +18,9 @@ import in.goodiebag.carouselpicker.CarouselPicker;
 
 public class RecettesCarousel extends Fragment
 {
-    View v;
-    CarouselView carouselPicker1;
+    //Proprietes
+    private View v;
+    private CarouselView carouselPicker1;
 
     int[] images = { R.drawable.recette1, R.drawable.dejeuners };
     @Nullable

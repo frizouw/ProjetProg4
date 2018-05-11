@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
+//Classe pour la liste d'amis
 public class ListeAmies extends Fragment
 {
     //PROPRIÉTÉS

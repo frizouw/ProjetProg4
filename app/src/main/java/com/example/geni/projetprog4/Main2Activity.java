@@ -90,26 +90,31 @@ public class Main2Activity extends AppCompatActivity
             Utils.CURRENT_USER = new Users(username, pays, email, urlImage, points, avatar);
         }
 
+        //Proprietes pour la toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Bonjour");
 
+        //Proprietes pour le drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        //proprietes pour la navigationView
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         // set le fragment de départ
         navigationView.setCheckedItem(R.id.nav_home);
 
+        //Les fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_main2, new RecettesCarousel()).commit();
     }
 
     // https://stackoverflow.com/questions/44447056/convert-adaptiveicondrawable-to-bitmap-in-android-o-preview
+    //Bitmap
     @NonNull
     private Bitmap getBitmapFromDrawable(@NonNull Drawable drawable) {
         final Bitmap bmp = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
@@ -121,6 +126,7 @@ public class Main2Activity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        //pour le drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);

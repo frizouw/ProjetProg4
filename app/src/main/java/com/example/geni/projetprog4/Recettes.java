@@ -7,10 +7,12 @@ import java.io.Serializable;
 
 public class Recettes
 {
+    //Proprietes
     private String nom, pays, dureePrep, dureeCuisson, tempsAttente, ingredients, type, preparation, date, urlImage;
     private int niveau, calories;
     private Bitmap image;
 
+    //Constructeur par parametres
     public Recettes(String nom, String pays, String dureePrep, String dureeCuisson, String tempsAttente, String ingredients, String type, String preparation, String date, String urlImage, int niveau, int calories)
     {
         this.nom = nom;
@@ -28,6 +30,7 @@ public class Recettes
         new DownloadImage(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, urlImage);
     }
 
+    //Methode d'access
     public String getUrlImage() {
         return urlImage;
     }

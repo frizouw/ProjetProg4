@@ -21,10 +21,11 @@ import java.util.List;
 
 public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHolder> {
 
+    //Proprietes
     private Context mContext ;
     private List<Recettes> mData ;
 
-
+    //constructeur par parametres
     public RecetteAdapter(Context mContext, List<Recettes> mData) {
         this.mContext = mContext;
         this.mData = mData;

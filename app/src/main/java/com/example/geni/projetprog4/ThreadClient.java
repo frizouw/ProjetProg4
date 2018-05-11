@@ -96,6 +96,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
         String[] splits = values[0].split("::");
         switch(splits[0])
         {
+            //la connexion
             case "connect" :
                 if(splits[1].equals("true"))
                 {
@@ -140,6 +141,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                     Toast.makeText(act, "Le compte n'existe pas", Toast.LENGTH_SHORT).show();
                 }
                 break;
+                //insert une inscription
             case "inscription" :
                 if(splits[1].equals("true"))
                 {
@@ -152,6 +154,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                     Toast.makeText(act, "Le compte existe déjà", Toast.LENGTH_SHORT).show();
                 }
                 break;
+                //prendre toutes les recettes
             case "allRecettes":
                 ArrayList<Recettes> server = new GsonBuilder().create().fromJson(splits[1], new TypeToken<ArrayList<Recettes>>(){}.getType());
                 ArrayList<Recettes> temps = new ArrayList<>();
@@ -161,10 +164,12 @@ public class ThreadClient extends AsyncTask<String,String,Void>
 
                 Utils.LIST_RECETTES = temps;
                 break;
+                //ajout de la date au calendrier
             case "askCalendrier":
                 String received = splits[1];
                 ((Main2Activity)getCurrentActivity()).updateUICalendrier(received);
                 break;
+                //ajout d'amis
             case "addAmies":
                 if(splits[1].equals("true"))
                 {
@@ -176,6 +181,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                     Toast.makeText(act, "Cette personne n'existe pas!", Toast.LENGTH_SHORT).show();
                 }
                 break;
+                //ajout ingredient
             case "addIngredient" :
                 if(splits[1].equals("true"))
                 {
@@ -191,6 +197,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                     }
                 }
                 break;
+                //supprimer de la liste
             case "removeIngredient":
                 if(splits[1].equals("true"))
                 {
@@ -215,6 +222,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                     Toast.makeText(act, "L'ingrédient ne peut pas être supprimer", Toast.LENGTH_SHORT).show();
                 }
                 break;
+                //ajout de recette selon le user
             case "addRecetteUser":
                 if(splits[1].equals("true"))
                 {

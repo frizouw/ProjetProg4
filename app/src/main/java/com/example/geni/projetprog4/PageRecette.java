@@ -31,10 +31,12 @@ public class PageRecette extends AppCompatActivity {
         if(getIntent().getExtras().containsKey("recette"))
             recette = getIntent().getExtras().getInt("recette");
 
+        //ViewerPagerAdapter
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         Bundle b = new Bundle();
         b.putInt("recette", recette);
 
+        //Ajouter les 3 autres fragments pour les ingredients, les etapes et le resume
         RecetteResumeFragment resume = new RecetteResumeFragment();
         resume.setArguments(b);
         RecetteIngredientFragment ingredient = new RecetteIngredientFragment();

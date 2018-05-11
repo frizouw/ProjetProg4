@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Utils
 {
+    //les listes
     public static ArrayList<Recettes> LIST_RECETTES = new ArrayList<>();
     public static ArrayList<Recettes> MES_RECETTES = new ArrayList<>();
     public static ArrayList<Users> AMIS = new ArrayList<>();

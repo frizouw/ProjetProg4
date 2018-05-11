@@ -11,9 +11,13 @@ import java.util.List;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
+    //classe qui permet d'ajouter plusieurs fragment pour le resume, l'etape et les ingredients dans
+    //chacune des recettes selectionnees
+    //Proprietes
     private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String> fragmentListTitre = new ArrayList<>();
 
+    //constructeur
     public ViewPagerAdapter(FragmentManager fm)
     {
         super(fm);

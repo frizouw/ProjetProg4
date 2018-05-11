@@ -5,16 +5,15 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-/**
- * Created by info1 on 2018-05-09.
- */
 
 public class Users
 {
+    //Proprietes
     private String username, pays, courriel, urlImage;
     private int points;
     private Bitmap image;
 
+    //Constructeur par parametres
     public Users(String username, String pays, String courriel, String urlImage, int points, ImageView img)
     {
         this.username = username;
@@ -33,6 +32,7 @@ public class Users
         this.points = points;
     }
 
+    //Methode d'acces
     public Bitmap getImage() {
         return image;
     }
