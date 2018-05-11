@@ -89,22 +89,6 @@ public class Main3Activity extends AppCompatActivity {
         btnInscrire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Vérifie avant si l'utilisateur existe déja
-                /*if (bd.utilisateurExiste(idUtilisateur.getText().toString().toLowerCase()))
-                {
-                    Toast.makeText(Main3Activity.this, "Ce compte existe déja", Toast.LENGTH_SHORT).show();
-                }
-                else if (!bd.utilisateurExiste(idUtilisateur.getText().toString().toLowerCase()))
-                {
-                    //insert dans la table des utilisateurs
-                    bd.insererUtilisateurs(idUtilisateur.getText().toString().toLowerCase(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), imageViewToByte(avatar));
-                    Toast.makeText(Main3Activity.this, "Inscription réussi!", Toast.LENGTH_SHORT).show();
-                    Intent intentRetourMenu = new Intent(Main3Activity.this, MainActivity.class);
-                    startActivity(intentRetourMenu);
-                }
-                else
-                    Toast.makeText(Main3Activity.this, "Oops.. Une information est manquante!", Toast.LENGTH_SHORT).show();*/
-
                 new ThreadClient.ThreadEnvoi(String.format("inscription::username=%s;password=%s;email=%s;pays=%s;urlImage=%s;points=%s", idUtilisateur.getText().toString().toLowerCase(), motPasse.getText().toString(), pays.getSelectedItem().toString(), courriel.getText().toString(), uri != null ? getPath(uri) : null, 0)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
 

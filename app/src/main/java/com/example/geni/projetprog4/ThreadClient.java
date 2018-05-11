@@ -99,7 +99,6 @@ public class ThreadClient extends AsyncTask<String,String,Void>
             case "connect" :
                 if(splits[1].equals("true"))
                 {
-                    Log.i("sss", splits[3]);
                     new ThreadEnvoi("allRecettes").executeOnExecutor(THREAD_POOL_EXECUTOR);
                     Utils.AMIS = new GsonBuilder().create().fromJson(splits[3], new TypeToken<ArrayList<Users>>(){}.getType());
                     ArrayList<String> epiceries = new GsonBuilder().create().fromJson(splits[4], new TypeToken<ArrayList<String>>(){}.getType());
@@ -111,6 +110,22 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                             tempItems.add(new ItemEpicerie(s, false));
                         }
                         Utils.LISTE_EPICERIE = tempItems;
+                    }
+
+                    Log.i("test", splits[5]);
+                    if(!splits[5].equals("[]"))
+                    {
+                        ArrayList<Recettes> serverMesRecettes = new GsonBuilder().create().fromJson(splits[5], new TypeToken<ArrayList<Recettes>>(){}.getType());
+                        ArrayList<Recettes> tempsMesRecettes = new ArrayList<>();
+
+                        for(Recettes r : serverMesRecettes)
+                            tempsMesRecettes.add(new Recettes(r.getNom(), r.getPays(), r.getDureePrep(), r.getDureeCuisson(), r.getTempsAttente(), r.getIngredients().trim().replaceAll("/(\\r\\n)+|\\r+|\\n+|\\t+/i", ""), r.getType(), r.getPreparation(), r.getDate(), r.getUrlImage(), r.getNiveau(), r.getCalories()));
+
+                        Utils.MES_RECETTES = tempsMesRecettes;
+                    }
+                    else
+                    {
+                        Utils.MES_RECETTES.clear();
                     }
 
                     //si la connexion est approuvee, commencer la nouvelle activite
@@ -198,6 +213,21 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 else
                 {
                     Toast.makeText(act, "L'ingrédient ne peut pas être supprimer", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case "addRecetteUser":
+                if(splits[1].equals("true"))
+                {
+                    Utils.MES_RECETTES.clear();
+                    ArrayList<String> mes_recettes = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<String>>(){}.getType());
+                    for(int i = 0; i < mes_recettes.size(); i++)
+                    {
+                        for(Recettes r : Utils.LIST_RECETTES)
+                        {
+                            if(r.getNom().equals(mes_recettes.get(i)))
+                                Utils.MES_RECETTES.add(r);
+                        }
+                    }
                 }
                 break;
         }

@@ -46,7 +46,6 @@ public class PageRecette extends AppCompatActivity {
         adapter.AddFragment(ingredient, "Ingredients");
         adapter.AddFragment(etape, "Étapes");
 
-
         viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
     }

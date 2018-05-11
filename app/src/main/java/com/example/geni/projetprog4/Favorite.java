@@ -30,7 +30,7 @@ public class Favorite extends Fragment {
         //initialiser la liste
         list_recette = new ArrayList<>();
 
-        RecetteAdapter adapter = new RecetteAdapter(getActivity(),Utils.LIST_RECETTES);
+        RecetteAdapter adapter = new RecetteAdapter(getActivity(),Utils.MES_RECETTES);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
         recyclerView.setAdapter(adapter);
 
