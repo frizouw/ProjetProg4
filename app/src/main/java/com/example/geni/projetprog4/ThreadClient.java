@@ -175,6 +175,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 {
                     Utils.AMIS = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<Users>>(){}.getType());
                     ((Main2Activity)getCurrentActivity()).updateUIAmies();
+                    Toast.makeText(getCurrentActivity(), "Ami ajouté!", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -185,6 +186,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
             case "addIngredient" :
                 if(splits[1].equals("true"))
                 {
+                    Toast.makeText(getCurrentActivity(), "Ingrédient ajouté à la liste", Toast.LENGTH_SHORT).show();
                     ArrayList<String> epiceries = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<String>>(){}.getType());
                     if(epiceries != null && epiceries.size() > 0)
                     {
@@ -196,11 +198,16 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                         Utils.LISTE_EPICERIE = tempItems;
                     }
                 }
+                else
+                {
+                    Toast.makeText(getCurrentActivity(), "L'ingrédient ne peut pas être ajouté à la liste", Toast.LENGTH_SHORT).show();
+                }
                 break;
                 //supprimer de la liste
             case "removeIngredient":
                 if(splits[1].equals("true"))
                 {
+                    Toast.makeText(getCurrentActivity(), "Ingrédient supprimé de la liste", Toast.LENGTH_SHORT).show();
                     ArrayList<String> epiceries = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<String>>(){}.getType());
                     if(epiceries != null && epiceries.size() > 0)
                     {
@@ -224,13 +231,21 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 break;
                 //ajout de recette selon le user
             case "addRecetteUser":
-                ArrayList<Recettes> listeServeur = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<Recettes>>(){}.getType());
-                ArrayList<Recettes> tempsRecettes = new ArrayList<>();
+                if(splits[1].equals("true"))
+                {
+                    ArrayList<Recettes> listeServeur = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<Recettes>>(){}.getType());
+                    ArrayList<Recettes> tempsRecettes = new ArrayList<>();
 
-                for(Recettes r : listeServeur)
-                    tempsRecettes.add(new Recettes(r.getNom(), r.getPays(), r.getDureePrep(), r.getDureeCuisson(), r.getTempsAttente(), r.getIngredients().trim().replaceAll("/(\\r\\n)+|\\r+|\\n+|\\t+/i", ""), r.getType(), r.getPreparation(), r.getDate(), r.getUrlImage(), r.getNiveau(), r.getCalories()));
+                    for(Recettes r : listeServeur)
+                        tempsRecettes.add(new Recettes(r.getNom(), r.getPays(), r.getDureePrep(), r.getDureeCuisson(), r.getTempsAttente(), r.getIngredients().trim().replaceAll("/(\\r\\n)+|\\r+|\\n+|\\t+/i", ""), r.getType(), r.getPreparation(), r.getDate(), r.getUrlImage(), r.getNiveau(), r.getCalories()));
 
-                Utils.MES_RECETTES = tempsRecettes;
+                    Utils.MES_RECETTES = tempsRecettes;
+                    Toast.makeText(act, "La recette à été ajouté aux favoris!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(act, "La recette n'a pas été ajouté au favoris!", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
