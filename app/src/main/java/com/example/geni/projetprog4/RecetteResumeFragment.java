@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class RecetteResumeFragment extends Fragment {
 
     //SOURCE : https://youtu.be/7zaKUc2zfpI?t=1136

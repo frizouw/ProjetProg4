@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TableLayout;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class PageRecette extends AppCompatActivity {
 
     TabLayout tab;

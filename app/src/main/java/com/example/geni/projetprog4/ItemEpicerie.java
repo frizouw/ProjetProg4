@@ -1,5 +1,6 @@
 package com.example.geni.projetprog4;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class ItemEpicerie
 {
     //Proprietes

@@ -2,7 +2,7 @@ package com.example.geni.projetprog4;
 
 import java.util.ArrayList;
 
-
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class Utils
 {
     public static String CHANNEL_ID = "COOKIE_JAR_ID";

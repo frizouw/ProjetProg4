@@ -24,7 +24,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Map;
 
-
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class ThreadClient extends AsyncTask<String,String,Void>
 {
     //le cote thread client

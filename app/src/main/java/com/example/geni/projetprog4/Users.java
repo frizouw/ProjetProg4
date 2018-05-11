@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class Users
 {
     //Proprietes

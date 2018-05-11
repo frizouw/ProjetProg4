@@ -18,6 +18,7 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class RecetteEtapeFragment extends Fragment {
 
     //Proprietes
@@ -27,12 +28,6 @@ public class RecetteEtapeFragment extends Fragment {
     private Button btnSave, btnCancel;
     private CalendarView calendarView;
     private static  String selectedDate;
-
-    //Constructeur
-    public RecetteEtapeFragment()
-    {
-
-    }
 
     @Nullable
     @Override

@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import java.io.Serializable;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class Recettes
 {
     //Proprietes

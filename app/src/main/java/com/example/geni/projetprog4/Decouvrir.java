@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.Random;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class Decouvrir extends Fragment {
 
     //Le fragment du profile lorsqu'on choisi profile dans le drawer

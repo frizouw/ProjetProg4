@@ -15,6 +15,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class ListeEpicerieAdapter extends ArrayAdapter<ItemEpicerie>
 {
     //Proprietes

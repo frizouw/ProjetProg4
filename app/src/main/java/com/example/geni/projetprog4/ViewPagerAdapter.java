@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Adapter pour la page d'une recette et ses onglets
-
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     //classe qui permet d'ajouter plusieurs fragment pour le resume, l'etape et les ingredients dans

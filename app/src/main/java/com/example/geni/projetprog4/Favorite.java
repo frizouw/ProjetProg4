@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class Favorite extends Fragment {
 
     //Proprietes

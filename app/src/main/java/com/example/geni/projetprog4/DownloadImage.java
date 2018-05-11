@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 //Classe qui telecharge l'image du url de la DB
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class DownloadImage extends AsyncTask<String, Void, Bitmap>
 {
     //Proprietes

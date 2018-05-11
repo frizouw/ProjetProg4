@@ -20,6 +20,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class ListeEpicerie extends Fragment {
 
     //Variables

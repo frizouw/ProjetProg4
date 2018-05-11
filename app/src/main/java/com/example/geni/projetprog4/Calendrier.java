@@ -28,6 +28,7 @@ import java.util.Calendar;
 
 import static android.content.Intent.getIntent;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class Calendrier extends Fragment{
 
     //Variables

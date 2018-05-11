@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.MyViewHolder> {
 
     //Proprietes

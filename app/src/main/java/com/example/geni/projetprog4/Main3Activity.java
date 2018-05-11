@@ -28,6 +28,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class Main3Activity extends AppCompatActivity {
 
     //Activite page du login quand un nouvel utilisateur veut se connecter

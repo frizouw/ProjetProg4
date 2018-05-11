@@ -16,6 +16,7 @@ import java.util.List;
 
 import in.goodiebag.carouselpicker.CarouselPicker;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class RecettesCarousel extends Fragment
 {
     //Proprietes

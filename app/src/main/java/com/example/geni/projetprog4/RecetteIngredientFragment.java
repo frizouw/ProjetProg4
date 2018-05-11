@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class RecetteIngredientFragment extends Fragment {
 
     //Proprietes

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 
 //Classe pour la liste d'amis
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class ListeAmies extends Fragment
 {
     //PROPRIÉTÉS

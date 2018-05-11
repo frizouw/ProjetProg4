@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+// Anthony Whelan, Genevieve Rollin, Claire Bun
 public class ProfileFragment extends Fragment
 {
     //Le fragment du profile lorsqu'on choisi profile dans le drawer
