@@ -224,19 +224,13 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 break;
                 //ajout de recette selon le user
             case "addRecetteUser":
-                if(splits[1].equals("true"))
-                {
-                    Utils.MES_RECETTES.clear();
-                    ArrayList<String> mes_recettes = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<String>>(){}.getType());
-                    for(int i = 0; i < mes_recettes.size(); i++)
-                    {
-                        for(Recettes r : Utils.LIST_RECETTES)
-                        {
-                            if(r.getNom().equals(mes_recettes.get(i)))
-                                Utils.MES_RECETTES.add(r);
-                        }
-                    }
-                }
+                ArrayList<Recettes> listeServeur = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<Recettes>>(){}.getType());
+                ArrayList<Recettes> tempsRecettes = new ArrayList<>();
+
+                for(Recettes r : listeServeur)
+                    tempsRecettes.add(new Recettes(r.getNom(), r.getPays(), r.getDureePrep(), r.getDureeCuisson(), r.getTempsAttente(), r.getIngredients().trim().replaceAll("/(\\r\\n)+|\\r+|\\n+|\\t+/i", ""), r.getType(), r.getPreparation(), r.getDate(), r.getUrlImage(), r.getNiveau(), r.getCalories()));
+
+                Utils.MES_RECETTES = tempsRecettes;
                 break;
         }
     }

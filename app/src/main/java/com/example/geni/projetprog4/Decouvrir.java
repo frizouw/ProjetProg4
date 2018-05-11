@@ -110,6 +110,7 @@ public class Decouvrir extends Fragment {
                 }
                 Intent i = new  Intent(getActivity(), PageRecette.class);
                 i.putExtra("recette", recettePos);
+                i.putExtra("mesrecettes", false);
                 Log.i("pos", String.valueOf(position));
                 startActivity(i);
             }

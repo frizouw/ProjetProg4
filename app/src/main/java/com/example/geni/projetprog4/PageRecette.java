@@ -28,13 +28,17 @@ public class PageRecette extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         int recette = 0;
+        boolean mesrecettes = false;
         if(getIntent().getExtras().containsKey("recette"))
             recette = getIntent().getExtras().getInt("recette");
+        if(getIntent().getExtras().containsKey("mesrecettes"))
+            mesrecettes = getIntent().getExtras().getBoolean("mesrecettes");
 
         //ViewerPagerAdapter
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         Bundle b = new Bundle();
         b.putInt("recette", recette);
+        b.putBoolean("mesrecettes", mesrecettes);
 
         //Ajouter les 3 autres fragments pour les ingredients, les etapes et le resume
         RecetteResumeFragment resume = new RecetteResumeFragment();

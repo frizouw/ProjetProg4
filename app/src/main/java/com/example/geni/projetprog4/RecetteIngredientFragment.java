@@ -34,7 +34,14 @@ public class RecetteIngredientFragment extends Fragment {
 
         if(getArguments() != null && getArguments().containsKey("recette"))
         {
-            recette = Utils.MES_RECETTES.get(getArguments().getInt("recette"));
+            if(getArguments().containsKey("mesrecettes"))
+            {
+                if(getArguments().getBoolean("mesrecettes"))
+                    recette = Utils.MES_RECETTES.get(getArguments().getInt("recette"));
+                else
+                    recette = Utils.LIST_RECETTES.get(getArguments().getInt("recette"));
+            }
+
             ingredients = recette.getIngredients().split(";");
             ArrayList<ItemEpicerie> listeIngredients = new ArrayList<>();
             for(String s : ingredients)
