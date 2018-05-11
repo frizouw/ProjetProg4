@@ -142,7 +142,7 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 ArrayList<Recettes> temps = new ArrayList<>();
 
                 for(Recettes r : server)
-                    temps.add(new Recettes(r.getNom(), r.getPays(), r.getDureePrep(), r.getDureeCuisson(), r.getTempsAttente(), r.getIngredients(), r.getType(), r.getPreparation(), r.getDate(), r.getUrlImage(), r.getNiveau(), r.getCalories()));
+                    temps.add(new Recettes(r.getNom(), r.getPays(), r.getDureePrep(), r.getDureeCuisson(), r.getTempsAttente(), r.getIngredients().trim().replaceAll("/(\\r\\n)+|\\r+|\\n+|\\t+/i", ""), r.getType(), r.getPreparation(), r.getDate(), r.getUrlImage(), r.getNiveau(), r.getCalories()));
 
                 Utils.LIST_RECETTES = temps;
                 break;
@@ -154,12 +154,50 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 if(splits[1].equals("true"))
                 {
                     Utils.AMIS = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<Users>>(){}.getType());
-                    Log.i("test",splits[2]);
                     ((Main2Activity)getCurrentActivity()).updateUIAmies();
                 }
                 else
                 {
                     Toast.makeText(act, "Cette personne n'existe pas!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case "addIngredient" :
+                if(splits[1].equals("true"))
+                {
+                    ArrayList<String> epiceries = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<String>>(){}.getType());
+                    if(epiceries != null && epiceries.size() > 0)
+                    {
+                        ArrayList<ItemEpicerie> tempItems = new ArrayList<>();
+                        for(String s : epiceries)
+                        {
+                            tempItems.add(new ItemEpicerie(s, false));
+                        }
+                        Utils.LISTE_EPICERIE = tempItems;
+                    }
+                }
+                break;
+            case "removeIngredient":
+                if(splits[1].equals("true"))
+                {
+                    ArrayList<String> epiceries = new GsonBuilder().create().fromJson(splits[2], new TypeToken<ArrayList<String>>(){}.getType());
+                    if(epiceries != null && epiceries.size() > 0)
+                    {
+                        ArrayList<ItemEpicerie> tempItems = new ArrayList<>();
+                        for(String s : epiceries)
+                        {
+                            tempItems.add(new ItemEpicerie(s, false));
+                        }
+                        Utils.LISTE_EPICERIE = tempItems;
+                    }
+                    else
+                    {
+                        Utils.LISTE_EPICERIE.clear();
+                    }
+                    ((Main2Activity)getCurrentActivity()).updateUIEpicerie(Utils.LISTE_EPICERIE);
+                }
+                else
+                {
+                    Toast.makeText(act, "L'ingrédient ne peut pas être supprimer", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

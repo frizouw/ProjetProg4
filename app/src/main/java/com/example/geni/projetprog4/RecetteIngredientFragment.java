@@ -39,7 +39,7 @@ public class RecetteIngredientFragment extends Fragment {
             ArrayList<ItemEpicerie> listeIngredients = new ArrayList<>();
             for(String s : ingredients)
             {
-                listeIngredients.add(new ItemEpicerie(s,false));
+                listeIngredients.add(new ItemEpicerie(s, false));
             }
 
             //ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.liste_custom, ingredients);
@@ -50,6 +50,7 @@ public class RecetteIngredientFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                String ingredients = "";
                 //prendre les items qui sont coches
                 //mettre dans une arraylist
                 for(int i = 0; i < listView.getCount(); i++)
@@ -57,11 +58,11 @@ public class RecetteIngredientFragment extends Fragment {
                     ItemEpicerie item = (ItemEpicerie)listView.getItemAtPosition(i);
                     if(item.isChecked)
                     {
-                        item.isChecked = false;
-                        Utils.LISTE_EPICERIE.add(item);
-                        new ThreadClient.ThreadEnvoi(String.format("addIngredient::userID=%s;ingredient=%s", Utils.CURRENT_USER.getUsername(), item.nom)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        ingredients += item.nom.trim() + "$$";
                     }
                 }
+
+                new ThreadClient.ThreadEnvoi(String.format("addIngredient::userID=%s;ingredient=%s", Utils.CURRENT_USER.getUsername(), ingredients.substring(0,ingredients.length() - 2))).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
         });
         return view;

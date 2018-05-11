@@ -43,16 +43,16 @@ public class ListeEpicerie extends Fragment {
             @Override
             public void onClick(View v) {
                 //retire les elements selectionnees dans la liste
+                String ingredients = "";
                 for(int i = 0; i < listeEpicerie.getCount(); i++)
                 {
                     ItemEpicerie item = (ItemEpicerie)listeEpicerie.getItemAtPosition(i);
                     if(item.isChecked)
                     {
-                        item.isChecked = false;
-                        Utils.LISTE_EPICERIE.remove(item);
-                        new ThreadClient.ThreadEnvoi(String.format("removeIngredient::userID=%s;ingredient=%s", Utils.CURRENT_USER.getUsername(), item.nom)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        ingredients += item.nom.trim() + "$$";
                     }
                 }
+                new ThreadClient.ThreadEnvoi(String.format("removeIngredient::userID=%s;ingredient=%s", Utils.CURRENT_USER.getUsername(), ingredients.substring(0,ingredients.length() - 2))).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
         });
 

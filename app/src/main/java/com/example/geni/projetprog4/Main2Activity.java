@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -283,5 +284,19 @@ public class Main2Activity extends AppCompatActivity
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.liste_custom, amis);
         ((ListView)findViewById(R.id.listAmies)).setAdapter(adapter);
+    }
+
+    //Methode pour update le ui de la liste d'épicerie
+    public void updateUIEpicerie(ArrayList<ItemEpicerie> liste)
+    {
+        if(!liste.isEmpty())
+        {
+            ListeEpicerieAdapter adapter = new ListeEpicerieAdapter(this, liste);
+            ((ListView)findViewById(R.id.listeEpicerie)).setAdapter(adapter);
+        }
+        else
+        {
+            ((ListView)findViewById(R.id.listeEpicerie)).setAdapter(null);
+        }
     }
 }
