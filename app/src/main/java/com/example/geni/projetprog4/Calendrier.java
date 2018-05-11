@@ -42,7 +42,7 @@ public class Calendrier extends Fragment{
         v = inflater.inflate(R.layout.calendrier, container,false);
         calendrier=v.findViewById(R.id.calendarView);
 
-        https://stackoverflow.com/questions/10339808/how-can-i-extract-date-from-calendarview-and-display-selected-date
+        //https://stackoverflow.com/questions/10339808/how-can-i-extract-date-from-calendarview-and-display-selected-date
         calendrier.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override

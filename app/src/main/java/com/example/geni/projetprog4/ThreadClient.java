@@ -166,8 +166,8 @@ public class ThreadClient extends AsyncTask<String,String,Void>
                 break;
                 //ajout de la date au calendrier
             case "askCalendrier":
-                String received = splits[1];
-                ((Main2Activity)getCurrentActivity()).updateUICalendrier(received);
+                ArrayList<String> items = new GsonBuilder().create().fromJson(splits[1], new TypeToken<ArrayList<String>>(){}.getType());
+                ((Main2Activity)getCurrentActivity()).updateUICalendrier(items);
                 break;
                 //ajout d'amis
             case "addAmies":

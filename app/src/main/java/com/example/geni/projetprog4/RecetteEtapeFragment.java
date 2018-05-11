@@ -43,7 +43,7 @@ public class RecetteEtapeFragment extends Fragment {
         //prendre les elements avec le key recette
         if(getArguments() != null && getArguments().containsKey("recette"))
         {
-            recette = Utils.LIST_RECETTES.get(getArguments().getInt("recette"));
+            recette = Utils.MES_RECETTES.get(getArguments().getInt("recette"));
             ((TextView)view.findViewById(R.id.txtEtapesRecette)).setText(recette.getPreparation());
         }
 

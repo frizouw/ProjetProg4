@@ -24,7 +24,7 @@ public class RecetteResumeFragment extends Fragment {
         view = inflater.inflate(R.layout.recette_resume_fragment_layout, container, false);
         if(getArguments() != null && getArguments().containsKey("recette"))
         {
-            recette = Utils.LIST_RECETTES.get(getArguments().getInt("recette"));
+            recette = Utils.MES_RECETTES.get(getArguments().getInt("recette"));
 
             ((TextView)view.findViewById(R.id.txtNomRecette)).setText(recette.getNom());
             ((ImageView)view.findViewById(R.id.imgRecette)).setImageBitmap(recette.getImage());

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Utils
 {
+    public static String CHANNEL_ID = "COOKIE_JAR_ID";
+
     //les listes
     public static ArrayList<Recettes> LIST_RECETTES = new ArrayList<>();
     public static ArrayList<Recettes> MES_RECETTES = new ArrayList<>();

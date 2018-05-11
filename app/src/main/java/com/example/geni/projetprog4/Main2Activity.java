@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -219,13 +220,12 @@ public class Main2Activity extends AppCompatActivity
     }
 
     //Methode pour update l'interface du calendrier
-    public void updateUICalendrier(String data)
+    public void updateUICalendrier(ArrayList<String> data)
     {
-        String[] recettes = data.split(";");
-        if(!recettes[0].equals("null"))
+        if(!data.isEmpty())
         {
             //montre les recettes selectionnees a la date
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, recettes);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.liste_custom, data);
             ((ListView)findViewById(R.id.listCalendrier)).setAdapter(adapter);
             Notifier();
         }
@@ -235,48 +235,19 @@ public class Main2Activity extends AppCompatActivity
         }
     }
 
+
     //Methode public pour creer la notification
     public void Notifier()
     {
-        Notification notif;
-        NotificationManager notifManag;
-        Intent i = new Intent(this, Main2Activity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, REQUESTCODE,i,PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, Utils.CHANNEL_ID)
+            .setSmallIcon(R.drawable.logo)
+            .setContentTitle(getString(R.string.noticationtitle))
+            .setContentText(getString(R.string.notificationtexte))
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
-        // Pour API 26+
-        if (android.os.Build.VERSION.SDK_INT >= 26)
-        {
-            //Créer une notification
-            notif = new NotificationCompat.Builder(this).setContentTitle(getString(R.string.noticationtitle))
-                    .setContentText(getString(R.string.notificationtexte))
-                    //.addAction(R.drawable.logo, "Recette de la journee",pendingIntent)
-                    //.addAction(R.drawable.ic_menu_manage, "Cancel", pendingIntent)
-                    .setSmallIcon(R.mipmap.ic_launcher_round)
-                    .setDefaults(Notification.DEFAULT_ALL)
-                    .setChannelId("id")
-                    .build();
-
-            // Créer le channel
-            NotificationChannel notificationChannel = new NotificationChannel("id", "channel", NotificationManager.IMPORTANCE_DEFAULT);
-            notifManag = (NotificationManager) getSystemService(Activity.NOTIFICATION_SERVICE);
-            notifManag.createNotificationChannel(notificationChannel);
-        }
-        // Pour API 25 et moins
-        else
-        {
-            //Créer une notification
-            notif = new NotificationCompat.Builder(this).setContentTitle(getString(R.string.noticationtitle))
-                    .setContentText(getString(R.string.notificationtexte))
-                    //.addAction(R.drawable.logo, "Recette de la journee",pendingIntent)
-                    //.addAction(R.drawable.ic_menu_manage, "Cancel", pendingIntent)
-                    .setSmallIcon(R.mipmap.ic_launcher_round)
-                    .setDefaults(Notification.DEFAULT_ALL)
-                    .build();
-            notifManag = (NotificationManager) getSystemService(Activity.NOTIFICATION_SERVICE);
-        }
-        // Afciher la notification
-        notifManag.notify(id,notif);
-        // Permettre plusieurs notifications
+        notificationManager.notify(id, mBuilder.build());
         id++;
     }
 
